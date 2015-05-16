@@ -7,8 +7,8 @@ tags: [new, bio, geek, noobie]
 comments: true
 image:
   feature: sample-image-5.jpg
-  credit: bigohire
-  creditlink: www.bigohire.com
+  credit: 300
+  creditlink: http://www.300themovie.com/
 ---
 
 <section id="table-of-contents" class="toc">
@@ -72,7 +72,8 @@ def linguagem():
 Curtiram a idéia? Não deixem de curtir o blog, adicionar nos favoritos e sempre voltarem. 
 
 Podem me add no Linkedin também...
-<div markdown="0"><a href="https://br.linkedin.com/in/icarobichir" class="btn btn-success">Add Linkedin</a></div>
+
+<a href="https://br.linkedin.com/in/icarobichir" class="btn btn-success">Add Linkedin</a>
 
 
 ## SOON...
