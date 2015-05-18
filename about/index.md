@@ -5,8 +5,8 @@ tags: [about, know, new, here]
 modified: 2015-05-14T20:53:07.573882-04:00
 image:
   feature: sample-image-2.jpg
-  credit: Geekstuff
-  creditlink: geekstuff.kanesbit.com
+  credit: Raspberrypi
+  creditlink: https://www.raspberrypi.org/
 ---
 
 ### O blog é um pouco de cada coisa:
