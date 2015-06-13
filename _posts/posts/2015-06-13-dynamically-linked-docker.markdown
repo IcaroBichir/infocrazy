@@ -3,7 +3,7 @@ layout: post
 title: "Dynamically Linked Docker"
 modified:
 categories: posts
-excerpt:
+excerpt: "Build docker dinamically to solve problems with Udev and devicemapper"
 tags: [docker, dynamic, static, error, solved]
 image:
   feature: sample-image-8.jpg
