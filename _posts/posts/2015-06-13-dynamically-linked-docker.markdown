@@ -22,7 +22,7 @@ date: 2015-06-13T11:42:51-03:00
 </div>
 </section><!-- /#table-of-contents -->
 
-##Building a dynamically linked Docker
+##Building a dynamically linked Docker v-1.6.2
 
 If you are having problem with Docker, getting this following error when initiate a new docker:
 
