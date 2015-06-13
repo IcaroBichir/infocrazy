@@ -65,7 +65,9 @@ $ sudo apt-get remove docker
 $ sudo apt-get autoremove
 {% endhighlight %}
 
-###Dependencies (ubuntu-trusty-64 14.04.2 LTS)
+###Dependencies 
+
+(running ubuntu-trusty-64 14.04.2 LTS)
 
 Let’s begin by installing the regular Docker package:
 
