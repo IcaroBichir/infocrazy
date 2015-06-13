@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dynamically Linked Docker"
+title: "Building a Dynamically Linked Docker v-1.6.2"
 modified:
 categories: posts
 excerpt: "Build docker dinamically to solve problems with Udev and devicemapper"
@@ -24,7 +24,7 @@ date: 2015-06-13T11:42:51-03:00
 
 ##Building a dynamically linked Docker v-1.6.2
 
-If you are having problem with Docker, getting this following error when initiate a new docker:
+If you are having problem with Docker, receiving this following error when initiate a new docker:
 
 {% highlight bash %}
 time="2015-06-10T17:24:26-03:00" level=fatal msg="Error response from daemon: 
@@ -34,23 +34,23 @@ Error mounting '/dev/mapper/docker-202:1-531040-16e1b3fabf3c9d9c9383f9ab59fef558
 on '/var/lib/docker/devicemapper/mnt/16e1b3fabf3c9d9c9383f9ab59fef558417bb61020dbbb19b947540af6999b78': no such file or directory" 
 {% endhighlight %}
 
-Check if Docker and Udev syncronization is OK:
+Check the Docker and Udev syncronization.
 
 {% highlight bash %}
 $ docker info | grep Udev
 Udev Sync Supported: false
 {% endhighlight %}
 
-Docker is meant to be built statically as it tries to contain everything it needs in the binary. If the return is false, your Docker is running statically and we <a href="https://github.com/docker/docker/issues/4036#issuecomment-111174341"> need to change that.</a> 
+Docker is meant to be built statically as it tries to contain everything it needs in the binary. If the return is false, your Docker is running statically and we <a href="https://github.com/docker/docker/issues/4036#issuecomment-111174341"> need to work on that.</a> 
 
-Check if docker is running dynamically or static with the following command:
+Check if docker is running dynamically with the following command:
 
 {% highlight bash %}
 $ ldd /usr/bin/docker
 not a dynamic executable
 {% endhighlight %}
 
-Catch all the versions of Docker running in your system
+Catch all the versions of Docker running in your system and remove then.
 
 {% highlight bash %}
 $ dpkg-query -l *docker*
@@ -65,9 +65,9 @@ $ sudo apt-get remove docker
 $ sudo apt-get autoremove
 {% endhighlight %}
 
-###Dependencies ( ubuntu-trusty-64 14.04.2 LTS ):
+###Dependencies (ubuntu-trusty-64 14.04.2 LTS)
 
-Let’s begin by installing the regular docker package:
+Let’s begin by installing the regular Docker package:
 
 {% highlight bash %}
 sudo apt-get install -qy apt-transport-https
@@ -76,7 +76,9 @@ sudo apt-get install uuid-dev libattr1-dev zlib1g-dev libacl1-dev e2fslibs-dev l
 sudo apt-get install asciidoc xmlto --no-install-recommends
 {% endhighlight %}
 
-BTRFS_BUILD VERSION should be set, before install dependencies.
+BTRFS_BUILD VERSION should be set before install dependencies.
+
+If not, <a href="https://git.kernel.org/cgit/linux/kernel/git/kdave/btrfs-progs.git/tree/version.h.in"> set correct version.</a>
 
 {% highlight bash %}
 $ #first check if your version is Btrfs v3.18.2
@@ -85,15 +87,12 @@ $ fgrep BTRFS_BUILD_VERSION btrfs-progs2/version.h
 $ fgrep BTRFS_BUILD_VERSION version.h
 {% endhighlight %}
 
-If not, <a href="https://git.kernel.org/cgit/linux/kernel/git/kdave/btrfs-progs.git/tree/version.h.in"> set the version.</a>
-
-Dependencies for BTRFS driver.
+Install dependencies for BTRFS driver.
 
 {% highlight bash %}
 $ git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/mason/btrfs-progs
 $ cd btrfs-progs/
 $ ./autogen.sh
-$ ./config
 $ ./configure
 $ make
 $ sudo make install
@@ -104,9 +103,10 @@ $ sudo make install
 {% highlight bash %}
 $ git clone https://git@github.com/docker/docker
 $ cd docker/
-$ #Go to the last stable version
-$ git branch
+$ #Checkout on the last stable version
+$ git branch release-v1.6.2
 $ git checkout release-v1.6.2
+$ git checkout v1.6.2
 $ AUTO_GOPATH=1 ./hack/make.sh dynbinary
 {% endhighlight %}
 
@@ -123,7 +123,7 @@ $ sudo ln -s docker-1.6.2 docker
 $ sudo ln -s dockerinit-1.6.2 dockerinit
 {% endhighlight %}
 
-## Check status, initiate and check syncronization with Udev
+## Check the Docker status and check syncronization with Udev
 
 {% highlight bash %}
 $ sudo service docker start
@@ -144,7 +144,7 @@ OS/Arch (server): linux/amd64
 {% endhighlight %}
 
 
-Now, your Docker is running on dinnamic mode, should not have problems with devicemapper.
+Now, your Docker is running in accordance with Udev, should not have problems with devicemapper.
 
 ###See Ya
 
