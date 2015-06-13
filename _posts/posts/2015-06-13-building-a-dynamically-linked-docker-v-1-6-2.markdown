@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Building a Dynamically Linked Docker v-1.6.2"
-modified:
+modified: 2015-06-13
 categories: posts
 excerpt: "Build docker dinamically to solve problems with Udev and devicemapper"
 tags: [docker, dynamic, static, error, solved]
+comment: true
 image:
   feature: sample-image-8.jpg
   credit: Docker
   creditlink: http://www.docker.com/ 
-date: 2015-06-13T11:42:51-03:00
 ---
 
 <section id="table-of-contents" class="toc">

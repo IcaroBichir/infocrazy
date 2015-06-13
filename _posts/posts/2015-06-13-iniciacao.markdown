@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Iniciação
+modified: 2015-05-13
+categories: posts
 excerpt: "O início de uma história sem fim, que iniciou a muito tempo atrás, mas que tem seu fim bem distante aos olhos humanos."
-modified: 2015-06-13
 tags: [new, bio, geek, noobie]
 comments: true
 image:
