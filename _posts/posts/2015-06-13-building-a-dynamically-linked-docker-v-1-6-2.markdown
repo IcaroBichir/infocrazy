@@ -5,7 +5,7 @@ modified: 2015-06-13
 categories: posts
 excerpt: "Build docker dinamically to solve problems with Udev and devicemapper"
 tags: [docker, dynamic, static, error, solved]
-comment: true
+comments: true
 image:
   feature: sample-image-8.jpg
   credit: Docker
