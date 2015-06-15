@@ -22,8 +22,6 @@ image:
 </div>
 </section><!-- /#table-of-contents -->
 
-##Building a dynamically linked Docker v-1.6.2
-
 If you are having problem with Docker, receiving this following error when initiate a new docker:
 
 {% highlight bash %}
