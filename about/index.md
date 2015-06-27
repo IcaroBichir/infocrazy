@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Quer conhecer sobre mim?
+title: You want to know me? 
 tags: [about, know, new, here]
 modified: 2015-05-14T20:53:07.573882-04:00
 image:
@@ -9,12 +9,12 @@ image:
   creditlink: https://www.raspberrypi.org/
 ---
 
-### O blog é um pouco de cada coisa:
+### On this blog, I will talk about numerals things, like:
 
-* Minhas idéias malucas
-* Minhas idéias sendo aplicadas em novos plugins e aplicações
-* Minhas paixões colocadas em práticas
-* Coisas que venho trabalho na empresa e que merecem ser compartilhadas
-* E um pouco de mais um monte de coisa....
+* Crazy ideias;
+* Plugins and Applications made by me and developed through my ideas;
+* Passions out of paper and materializing;
+* Developed things on my work that need to be shared;
+* And off course, some nonsense too... Geeks, News and other uncategorized informations.
 
-<a markdown="0" href="http://icarobichir.github.io/infocrazy/" class="btn">Enjoy</a>
+<a markdown="0" href="http://icarobichir.com.br" class="btn">Welcome</a>
