@@ -28,6 +28,6 @@ Here I will insert all my partners in life and sites that have my access every d
 
 #### Under Construction
 
-If toy want to became a partner, send me a email or comment below.
+If you want to became a partner, send me a email or comment below.
 
 <mailto:icbichir1@gmail.com>
