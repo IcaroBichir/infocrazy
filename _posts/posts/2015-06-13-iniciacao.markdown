@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Iniciação
-modified: 2015-05-13
+modified: 2015-05-07
 categories: posts
 excerpt: "O início de uma história sem fim, que iniciou a muito tempo atrás, mas que tem seu fim bem distante aos olhos humanos."
 tags: [new, bio, geek, noobie]
@@ -62,7 +62,7 @@ ENJOY=`"Curto desenvolver em shell scrip" | sed 's/ //g'`
 echo $ENJOY
 {% endhighlight %}
 
-{% highlight python%}
+{% highlight python %}
 #! /usr/bin/env python
 
 def linguagem():
@@ -74,7 +74,7 @@ Curtiram a idéia? Não deixem de curtir o blog, adicionar nos favoritos e sempr
 
 Podem me add no Linkedin também...
 
-<a href="https://br.linkedin.com/in/icarobichir" class="btn btn-success">Add Linkedin</a>
+<a href="https://br.linkedin.com/in/icarobichir" target="_blank" class="btn btn-success">Add Linkedin</a>
 
 
 ## SOON...
