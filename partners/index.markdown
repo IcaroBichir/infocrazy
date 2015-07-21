@@ -30,13 +30,13 @@ Here I will insert all my partners in life and sites that have my access every d
 
 > ###Fernanda Mantovani
 
- Is my partner in life, the best lawyer you ever gonna see. If you need one, don't hesitate. <a href="http://vpmadvocacia.com.br/"> Her site!!</a>
+ Is my partner in life, the best lawyer you ever gonna see. If you need one, don't hesitate. <a href="http://vpmadvocacia.com.br/" target="_blank"> Her site!!</a>
 
 ******
 
 > ###Erick Wendel
 
- Is a college friend, from the .Net community, he is a Developer with skills on .Net, Python and Security Tools. <a href="http://erickwendel.com.br/"> His site!!</a>
+ Is a college friend, from the .Net community, he is a Developer with skills on .Net, Python and Security Tools. <a href="http://erickwendel.com.br/" target="_blank"> His site!!</a>
 
 ******
 
