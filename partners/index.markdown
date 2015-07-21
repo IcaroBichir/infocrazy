@@ -3,7 +3,7 @@ layout: page
 title: "Partners"
 date: 2015-06-27
 modified:
-excerpt: "My partners and referencies sites and blogs"
+excerpt: "My partners, references sites and blogs"
 tags: [partners, friends, referencies, blogs, sites, knowledging]
 comments: true
 image:
