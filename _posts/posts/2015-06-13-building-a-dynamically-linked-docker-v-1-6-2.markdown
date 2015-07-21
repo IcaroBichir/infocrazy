@@ -39,7 +39,7 @@ $ docker info | grep Udev
 Udev Sync Supported: false
 {% endhighlight %}
 
-Docker is meant to be built statically as it tries to contain everything it needs in the binary. If the return is false, your Docker is running statically and we <a href="https://github.com/docker/docker/issues/4036#issuecomment-111174341"> need to work on that.</a> 
+Docker is meant to be built statically as it tries to contain everything it needs in the binary. If the return is false, your Docker is running statically and we <a href="https://github.com/docker/docker/issues/4036#issuecomment-111174341" target="_blank"> need to work on that.</a> 
 
 Check if docker is running dynamically with the following command:
 
@@ -147,7 +147,3 @@ OS/Arch (server): linux/amd64
 Now, your Docker is running in accordance with Udev, should not have problems with devicemapper.
 
 ###See Ya
-
-
-
-
