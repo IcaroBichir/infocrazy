@@ -4,7 +4,7 @@ title: "Partners"
 date: 2015-06-27
 modified:
 excerpt: "My partners, references sites and blogs"
-tags: [partners, friends, referencies, blogs, sites, knowledging]
+tags: [partners, friends, references, blogs, sites]
 comments: true
 image:
   feature: sample-image-9.jpg
@@ -22,9 +22,9 @@ image:
 </div>
 </section><!-- /#table-of-contents -->
 
-# All Partners and Referencies
+# All Partners and References
 
-Here I will insert all my partners in life and sites that have my access every day
+Here I will insert all my partners in life and sites that have my access every day.
 
 ******
 
