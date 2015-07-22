@@ -27,7 +27,7 @@ In the end of this tutorial, your Jenkins will execute every Bitbucket open pull
 
 ------
 
-Go to my <a href="https://github.com/IcaroBichir/jenkins_bitbucket_pullrequest"> Github</a> page and fork the master version of shell script.
+Go to my <a href="https://github.com/IcaroBichir/jenkins_bitbucket_pullrequest" target="_blank"> Github</a> page and fork the master version of shell script.
 
 > Your comments on bitbucker will be just like this:
 
