@@ -33,7 +33,7 @@ analytics :
 owner:
   name: Ícaro Bichir
   avatar: bio-photo.jpg
-  bio: "A geek that dreams to be a hacker became a programmer security especialist, and now, I'm a DevOps Analyst. ;)"
+  bio: "Geek that dreams to be a hacker, became a intern security, a DevOps Analyst and now, SysAdmin with DevOps Engineering thinking. ;)"
   disqus-shortname: icarobichir
   email: icbichir1@gmail.com
   github: icarobichir
@@ -42,4 +42,3 @@ owner:
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
-
