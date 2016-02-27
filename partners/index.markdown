@@ -30,7 +30,7 @@ Here I will insert all my partners in life and sites that have my access every d
 
 > ###Fernanda Mantovani
 
- Is my partner in life, the best lawyer you ever gonna see. If you need one, don't hesitate. <a href="http://vpmadvocacia.com.br/" target="_blank"> Her site!!</a>
+ Is my partner in life, the best lawyer you ever gonna see. If you need one, don't hesitate. <a href="https://br.linkedin.com/in/fernandamantovani" target="_blank"> Her site!!</a>
 
 ******
 
