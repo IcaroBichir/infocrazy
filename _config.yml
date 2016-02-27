@@ -2,7 +2,7 @@
 
 title:            Ícaro Bichir
 locale:           en_US
-url:              //icarobichir.com.br
+url:              //localhost:4000 ##//icarobichir.com.br
 
 
 # Jekyll configuration
