@@ -70,8 +70,3 @@ Nginx >= 1.1.9 will re-resolve DNS records based on their TTL, but with this <st
 ### “End Of Line” – The MCP, TRON
 
 If you have some question or update about this procedure, please contact me.
-
-
-
-
-
