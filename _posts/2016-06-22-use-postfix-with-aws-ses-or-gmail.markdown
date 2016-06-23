@@ -30,9 +30,9 @@ date: 2016-06-22T22:49:59-03:00
 
 ### Before you start: 
 
-> Generate your SMTP username and password ( [AWS SES](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html) ; [Gmail, will need App password](https://security.google.com/settings/security/apppasswords)
+> Generate your SMTP username and password ( <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html" target="_blank">AWS SES</a> ; <a href="https://security.google.com/settings/security/apppasswords" target="_blank">Gmail, will need App password</a>
 
-> [Verify](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html) the domain and email addresses
+> <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html" target="_blank">Verify</a> the domain and email addresses
 
 > Check if your *certificate* exists 
 
@@ -40,7 +40,7 @@ date: 2016-06-22T22:49:59-03:00
 
 - Ubuntu: */etc/ssl/certs/ca-certificates.crt*
 
-> This tutorial was made for *us-east* region, just change the [endpoint for other regions](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html)
+> This tutorial was made for *us-east* region, just change the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html" target="_blank">endpoint for other regions</a>
 
 ### Install the required packages
 

@@ -28,15 +28,21 @@ Here I will insert all my partners in life and sites that have my access every d
 
 ******
 
-> ### Fernanda Mantovani
+> ###  <a href="http://artmanager.com.br/" target="_blank">ArtManager</a>
 
- Is my partner in life, the best lawyer you ever gonna see. If you need one, don't hesitate. <a href="https://br.linkedin.com/in/fernandamantovani" target="_blank"> Her site!!</a>
+ My personal project, in partnership with friends. It's a mobile aplication for Artists commerce management.
 
 ******
 
-> ### Erick Wendel
+> ### <a href="https://br.linkedin.com/in/fernandamantovani" target="_blank">Fernanda Mantovani</a>
 
- Is a college friend, from the .Net community, he is a Developer with skills on .Net, Python and Security Tools. <a href="http://erickwendel.com.br/" target="_blank"> His site!!</a>
+ Is my partner in life, the best lawyer you ever gonna see. If you need one, don't hesitate.
+
+******
+
+> ### <a href="https://br.linkedin.com/in/fernandamantovani" target="_blank">Erick Wendel</a>
+
+ Is a college friend, from the .Net community, he is a Developer with skills on .Net, Python and Security Tools.
 
 ******
 
