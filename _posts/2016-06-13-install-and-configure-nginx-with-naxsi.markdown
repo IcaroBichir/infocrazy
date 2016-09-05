@@ -62,15 +62,30 @@ mv naxsi-0.53/nx_util/  /usr/local/naxsi-0.54/nx_util-0.53/
 
 {% highlight bash %}
 cd nginx-1.8.1
-./configure --conf-path=/usr/local/nginx/conf/nginx.conf --add-module=/usr/local/naxsi-0.54/naxsi_src/ \
---error-log-path=/var/log/nginx/error.log --http-client-body-temp-path=/usr/local/nginx/body \
---http-fastcgi-temp-path=/usr/local/nginx/fastcgi --http-log-path=/var/log/nginx/access.log \
---http-proxy-temp-path=/usr/local/nginx/proxy --lock-path=/var/lock/nginx.lock \
---pid-path=/var/run/nginx.pid --with-http_ssl_module \
---with-http_ssl_module --with-http_realip_module \
---without-mail_pop3_module --without-mail_smtp_module \
---without-mail_imap_module --without-http_uwsgi_module \
---without-http_scgi_module --with-ipv6 --prefix=/usr/local/nginx
+./configure --conf-path=/usr/local/nginx/conf/nginx.conf \
+--add-module=/usr/local/naxsi-0.54/naxsi_src/ \
+--error-log-path=/var/log/nginx/error.log \
+--http-client-body-temp-path=/usr/local/nginx/body \
+--http-fastcgi-temp-path=/usr/local/nginx/fastcgi \
+--http-uwsgi-temp-path=/usr/local/nginx/uwsgi \
+--http-scgi-temp-path=/usr/local/nginx/scgi \
+--http-log-path=/var/log/nginx/access.log \
+--http-proxy-temp-path=/usr/local/nginx/proxy \
+--lock-path=/var/run/nginx.lock \
+--pid-path=/var/run/nginx.pid \
+--with-http_ssl_module \
+--with-http_ssl_module \
+--with-http_addition_module \
+--with-http_realip_module \
+--with-http_gunzip_module \
+--without-mail_pop3_module \
+--without-mail_smtp_module \
+--without-mail_imap_module \
+--without-http_uwsgi_module \
+--without-http_scgi_module \
+--with-ipv6 \
+--sbin-path=/usr/sbin/nginx \
+--prefix=/usr/local/nginx
 make
 make install
 {% endhighlight %}
