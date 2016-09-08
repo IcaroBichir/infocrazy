@@ -40,7 +40,7 @@ Here I will insert all my partners in life and sites that have my access every d
 
 ******
 
-> ### <a href="https://br.linkedin.com/in/fernandamantovani" target="_blank">Erick Wendel</a>
+> ### <a href="http://www.erickwendel.com.br" target="_blank">Erick Wendel</a>
 
  Is a college friend, from the .Net community, he is a Developer with skills on .Net, Python and Security Tools.
 
