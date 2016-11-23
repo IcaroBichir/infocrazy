@@ -24,7 +24,7 @@ date: 2016-06-22T22:49:59-03:00
 </section><!-- /#table-of-contents -->
 
 
-> Works on Centos and Ubuntu
+> Works on Centos, Amazon Linux and Ubuntu
 
 > Execute all steps on root account
 
@@ -36,7 +36,7 @@ date: 2016-06-22T22:49:59-03:00
 
 > Check if your *certificate* exists 
 
-- Centos: */etc/pki/tls/certs/ca-bundle.crt*
+- Centos or Amazon Linux: */etc/pki/tls/certs/ca-bundle.crt*
 
 - Ubuntu: */etc/ssl/certs/ca-certificates.crt*
 
@@ -44,7 +44,7 @@ date: 2016-06-22T22:49:59-03:00
 
 ### Install the required packages
 
-#### Centos
+#### Centos or Amazon Linux
 
 {% highlight bash %}
 $ yum install postfix mailx cyrus-sasl cyrus-sasl-plain cyrus-sasl-lib cyrus-imapd cyrus-imapd-utils
@@ -75,7 +75,7 @@ relayhost = smtp.gmail.com:587
 #### AWS SES
 
 {% highlight bash %}
-relayhost = [email-smtp.us-east-1.amazonaws.com]:25
+relayhost = email-smtp.us-east-1.amazonaws.com:25
 smtp_sasl_auth_enable = yes
 smtp_sasl_security_options = noanonymous
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
@@ -99,8 +99,8 @@ EOF
 {% highlight bash %}
 $ touch /etc/postfix/sasl_passwd
 $ cat << EOF >/etc/postfix/sasl_passwd
-[email-smtp.us-east-1.amazonaws.com]:25 SMTP_USERNAME:SMTP_PASSWORD
-[ses-smtp-prod-335357831.us-east-1.elb.amazonaws.com]:25 SMTP_USERNAME:SMTP_PASSWORD
+email-smtp.us-east-1.amazonaws.com:25 SMTP_USERNAME:SMTP_PASSWORD
+ses-smtp-prod-335357831.us-east-1.elb.amazonaws.com:25 SMTP_USERNAME:SMTP_PASSWORD
 EOF
 {% endhighlight %}
 
