@@ -138,9 +138,33 @@ $ vim /usr/local/nginx/conf.d/*.conf
     }
 {% endhighlight %}
 
+
+### Configure the nginx deamon 
+
+{% highlight bash %}
+$ sudo vim /lib/systemd/system/nginx.service
+
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+{% endhighlight %}
+
 ### Start your nginx, with naxsi compiled inside
 
 {% highlight bash %}
+$ sudo systemctl daemon-reload
 $ sudo service nginx start
 {% endhighlight %}
 
