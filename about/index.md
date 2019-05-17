@@ -17,4 +17,4 @@ image:
 * Developed things on my work that need to be shared;
 * And off course, some nonsense too... Geeks, News and other uncategorized informations.
 
-<a markdown="0" href="http://icarobichir.com.br" class="btn">Welcome</a>
+<a markdown="0" href="https://icarobichir.com" class="btn">Welcome</a>
