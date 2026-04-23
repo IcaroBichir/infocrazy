@@ -17,11 +17,11 @@ btnform {
 		padding: 0;
 		color: $textcolor;
 		border: 0;
-		border-bottom: 1px solid lighten($black, 80);
+		border-bottom: 1px solid #ccc;
 		white-space: normal; 
 	}
 	p {
-		margin-bottom: 5px / 2; 
+		margin-bottom: 5px / 2;
 	}
 	ul {
 		list-style-type: none; 
@@ -67,10 +67,10 @@ select {
 	padding: 4px;
 	margin-bottom: 5px / 4;
 	background-color: $white;
-	border: 1px solid lighten($black, 80);
+	border: 1px solid #ccc;
 	color: $textcolor; 
 	&:hover {
-		border-color: lighten($accentcolor, 50); 
+		border-color: #f5ddb8;
 	}
 }
 .input-mini { 
@@ -200,7 +200,7 @@ select:focus {
 
 .help-block,
 .help-inline {
-	color : lighten($black, 50); 
+	color : #808080;
 }
 .help-block {
 	display : block; 
