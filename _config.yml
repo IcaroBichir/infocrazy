@@ -1,9 +1,9 @@
 # Site wide configuration
 
-title:            Ícaro Bichir
+title:            "Icaro Bichir"
 locale:           en_US
-url:              //icarobichir.com
-
+url:              https://icarobichir.com
+description:      "I bring ideas to life — through lenses, shelves, and stories. Let me bring yours too."
 
 # Jekyll configuration
 
@@ -13,7 +13,8 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
-gems:
+  quiet_deps: true
+plugins:
   - jekyll-sitemap
 
 kramdown:
@@ -23,22 +24,17 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
-#Google analytics
-analytics :
-  provider : google 
-  google : 
-      tracking_id : 'UA-63079769-1'
-
 # Site owner
 owner:
-  name: Ícaro Bichir
+  name: "Icaro Bichir"
   avatar: bio-photo.jpg
-  bio: "Geek that dreams to be a hacker, became a intern security, a DevOps Analyst and now, SysAdmin with DevOps Engineering thinking. ;)"
-  disqus-shortname: icarobichir
-  email: icbichir1@gmail.com
+  bio: "Content Creator & Photographer. I bring ideas to life — through lenses, shelves, and stories."
+  email: imbcollabs@gmail.com
   github: icarobichir
   linkedin: icarobichir
-  lastfm: icaro_0
+  instagram: icarobichir
+  tiktok: shelftherapystudio
+  behance: icarobichir1
 
 include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "partners"]
