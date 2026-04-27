@@ -1,0 +1,73 @@
+---
+layout: section
+title: Tech
+subtitle: "Cloud Infrastructure, DevOps & Security"
+hero_image: hero-tech-banner.jpg
+excerpt: "Icaro Bichir — Cloud Infrastructure Tech Lead with 10+ years in DevOps, security, and fintech infrastructure."
+---
+
+<h2>Background</h2>
+
+<p>I'm a Cloud Infrastructure Tech Lead at <strong>REPAY</strong>, where I've spent 7+ years building and securing payment infrastructure. I manage 100+ AWS accounts, lead PCI-DSS and ISO 22301 compliance efforts, and mentor engineering teams — certified by HashiCorp, AWS, and EXIN.</p>
+
+<p>My career has been rooted in fintech and payments — from <strong>Braspag</strong> (South America's largest payment gateway) to <strong>Remessa Online</strong> (cross-border money transfer), <strong>Boom Financial</strong> (credit card fintech between Brazil and the U.S.), and e-commerce companies like <strong>InfoPrice</strong> and <strong>Boolabs</strong>. I started my tech journey at <strong>Apple</strong> as a Macintosh Solutions Consultant.</p>
+
+<p>Along the way, I've architected high-throughput clusters handling thousands of requests per second, implemented blockchain infrastructure between BeeTech and Ripple, led monolith-to-microservices migrations, and built internal training programs for AWS, Terraform, and Kubernetes. I also served as a DevOps Technical Interviewer and Mentor at <strong>BairesDev</strong>, interviewing 100+ candidates and helping 90% of underperforming mentees turn into top performers.</p>
+
+<p>That engineering mindset — structured thinking, precision, and reliability — is exactly what I bring to content creation today.</p>
+
+<h3>Certifications</h3>
+<ul>
+  <li>HashiCorp Certified</li>
+  <li>AWS Certified</li>
+  <li>EXIN — Information Security Foundation (ISFS)</li>
+  <li>University of Maryland — Hardware Security &amp; Usable Security</li>
+  <li>University of Maryland — Cybersecurity Specialization</li>
+</ul>
+
+<h3>Core Technologies</h3>
+<div class="ugc-tools">
+  <span class="ugc-tool-tag">AWS</span>
+  <span class="ugc-tool-tag">Terraform</span>
+  <span class="ugc-tool-tag">Kubernetes</span>
+  <span class="ugc-tool-tag">Docker</span>
+  <span class="ugc-tool-tag">Jenkins</span>
+  <span class="ugc-tool-tag">ECS / EKS</span>
+  <span class="ugc-tool-tag">Envoy / Gloo</span>
+  <span class="ugc-tool-tag">Datadog</span>
+  <span class="ugc-tool-tag">Grafana</span>
+  <span class="ugc-tool-tag">Cloudflare</span>
+  <span class="ugc-tool-tag">Python</span>
+  <span class="ugc-tool-tag">Shell</span>
+  <span class="ugc-tool-tag">Linux</span>
+  <span class="ugc-tool-tag">PostgreSQL</span>
+</div>
+
+<div class="social-links">
+  <a href="https://github.com/icarobichir" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-github"></i> GitHub</a>
+  <a href="https://linkedin.com/in/icarobichir" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</div>
+
+<h2>Articles</h2>
+
+<div id="index">
+  {% for post in site.posts %}
+  {% unless post.next %}
+    <h3>{{ post.date | date: '%Y' }}</h3>
+    {% else %}
+      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+      {% if year != nyear %}
+        <h3>{{ post.date | date: '%Y' }}</h3>
+      {% endif %}
+    {% endunless %}
+    <article>
+      {% if post.link %}
+        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+      {% else %}
+        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </article>
+  {% endfor %}
+</div>
