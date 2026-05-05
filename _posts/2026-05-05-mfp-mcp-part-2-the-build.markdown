@@ -165,28 +165,21 @@ Write the docstring for Claude, not for a human developer. Be explicit about arg
 
 ### Connecting to Claude Code
 
-MCP servers go in `~/.claude/.mcp.json` (not `settings.json`). Clone the repo first, then add an entry pointing at the venv Python and the server script:
+Clone the repo, set up the venv, then register the server with one command:
 
 ```bash
 git clone https://github.com/IcaroBichir/mcp_myfitnesspal.git ~/mcp_myfitnesspal
 cd ~/mcp_myfitnesspal && python3 -m venv .venv
 .venv/bin/pip install "lxml>=5.0" "mcp[cli]" myfitnesspal python-dotenv
+
+claude mcp add -s user myfitnesspal \
+  ~/mcp_myfitnesspal/.venv/bin/python3 -- \
+  ~/mcp_myfitnesspal/server.py
 ```
 
-Then edit `~/.claude/.mcp.json`:
+The `-s user` flag is the important part. It writes to `~/.claude.json` — the file Claude Code actually manages — and makes the server available globally across every session and directory. Don't manually edit `.mcp.json` files; changes there won't be picked up until the next restart and don't persist properly across sessions.
 
-```json
-{
-  "mcpServers": {
-    "myfitnesspal": {
-      "command": "/Users/your-username/mcp_myfitnesspal/.venv/bin/python3",
-      "args": ["/Users/your-username/mcp_myfitnesspal/server.py"]
-    }
-  }
-}
-```
-
-Credentials go in a `.env` file inside the cloned repo — `python-dotenv` loads them automatically at startup. Use absolute paths in the config; `~/` shortcuts don't work there.
+Credentials go in a `.env` file inside the cloned repo — `python-dotenv` loads them automatically at startup. Start a new Claude Code session after registering and the tools will be live.
 
 The README at [github.com/IcaroBichir/mcp_myfitnesspal](https://github.com/IcaroBichir/mcp_myfitnesspal) also has a single prompt you can paste into Claude Code to automate the whole setup.
 
