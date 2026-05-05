@@ -165,24 +165,30 @@ Write the docstring for Claude, not for a human developer. Be explicit about arg
 
 ### Connecting to Claude Code
 
-Add to `~/.claude/settings.json`:
+MCP servers go in `~/.claude/.mcp.json` (not `settings.json`). Clone the repo first, then add an entry pointing at the venv Python and the server script:
+
+```bash
+git clone https://github.com/IcaroBichir/mcp_myfitnesspal.git ~/mcp_myfitnesspal
+cd ~/mcp_myfitnesspal && python3 -m venv .venv
+.venv/bin/pip install "lxml>=5.0" "mcp[cli]" myfitnesspal python-dotenv
+```
+
+Then edit `~/.claude/.mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "myfitnesspal": {
-      "command": "/path/to/mcp_myfitnesspal/.venv/bin/python3",
-      "args": ["/path/to/mcp_myfitnesspal/server.py"],
-      "env": {
-        "MFP_USERNAME": "your_username",
-        "MFP_PASSWORD": "your_password"
-      }
+      "command": "/Users/your-username/mcp_myfitnesspal/.venv/bin/python3",
+      "args": ["/Users/your-username/mcp_myfitnesspal/server.py"]
     }
   }
 }
 ```
 
-Or use a `.env` file in the project directory and leave the `env` block out of the config — `python-dotenv` will pick it up automatically when the server starts.
+Credentials go in a `.env` file inside the cloned repo — `python-dotenv` loads them automatically at startup. Use absolute paths in the config; `~/` shortcuts don't work there.
+
+The README at [github.com/IcaroBichir/mcp_myfitnesspal](https://github.com/IcaroBichir/mcp_myfitnesspal) also has a single prompt you can paste into Claude Code to automate the whole setup.
 
 ---
 

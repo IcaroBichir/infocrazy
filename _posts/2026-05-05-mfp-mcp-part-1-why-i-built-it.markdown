@@ -110,4 +110,4 @@ This is the first of two posts. Here's the structure:
 1. **This post** — why I built it and where it fits in the bigger health dashboard
 2. **The build** — the approach to a dead API, the Python stack, the six tools, how to connect it to Claude
 
-The code is at `/Users/icaro/icaro_lifestyle/tech/mcp_myfitnesspal` and is not yet published — I want to test it properly against live data before releasing it. That's on the list.
+The code is live at [github.com/IcaroBichir/mcp_myfitnesspal](https://github.com/IcaroBichir/mcp_myfitnesspal). The README has a copy-paste prompt you can send to Claude to set it up automatically, and a manual step-by-step if you prefer doing it yourself.
