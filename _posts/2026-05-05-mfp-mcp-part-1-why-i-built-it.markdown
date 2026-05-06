@@ -19,6 +19,10 @@ date: 2026-05-05T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+**Update (May 2026):** After publishing this series, MFP's Cloudflare Bot Fight Mode started blocking all automated HTTP clients — including the `python-myfitnesspal` HTML scraper the original implementation depended on. The approach described in Part 2 no longer works as written. [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) tells that story and covers the replacement: MFP's undocumented mobile JSON API, which has no Cloudflare protection.
+
+---
+
 A few weeks ago I finished wiring Claude to Strava. Claude can now see every workout I've logged — distance, pace, heart rate, volume by week, how this month compares to last. That [series is here](/tech/wiring-claude-to-my-running-shoes-part-1-why-i-built-it/) if you want context.
 
 Almost immediately I hit the next problem. I'd ask something like: *"Is my protein intake keeping up with my training volume this month?"* and Claude had no way to answer it. Half the picture was there. The other half — what I eat — was completely dark.
@@ -67,9 +71,13 @@ Here's the part that makes this trickier than the Strava build: **MyFitnessPal d
 
 Strava's API has been around since 2012 and is well-maintained. MFP quietly pulled theirs and never replaced it.
 
-The `myfitnesspal` Python library exists specifically for this situation. It authenticates against the MFP website using your username and password, maintains a browser session, and scrapes the diary data from the web interface. It's unofficial, it's technically web scraping, and it works.
+The `myfitnesspal` Python library exists specifically for this situation. It authenticates against the MFP website using your credentials, maintains a session, and scrapes diary HTML into Python objects. I started there — and it worked, until it didn't.
 
-I weighed the tradeoff. For my own data on my own machine, this is fine. If MFP significantly changes their site structure, the library might break. That's a real risk I'm accepting. The upside — actually being able to use five years of logged data — is worth it.
+What I didn't know when I first published this series: MFP runs Cloudflare Bot Fight Mode on their HTML pages. It lets browsers through and blocks everything else. The scraper worked initially because the session cookies held a short-lived Cloudflare clearance token. When that expired, every request started returning 403 with no path forward — not with Python requests, not with a Chrome-impersonating TLS stack, not with a real Chrome binary under automation.
+
+The replacement is cleaner, and ironically less fragile: MFP's undocumented mobile JSON API at `api.myfitnesspal.com`. No Cloudflare protection. Clean JSON responses. A bearer token you can get using your existing session cookies from a single endpoint on the main domain. The whole scraping layer is gone.
+
+[Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is entirely about this — why the scraper broke, every bypass I tried, and how we ended up with a better implementation than the one I originally designed.
 
 ---
 
@@ -99,7 +107,7 @@ That's the destination. Right now I'm building the roads.
 
 My nutrition data is more personal than my workout data. Weight trends, eating patterns, bad weeks — this is not something I'm comfortable routing through third-party infrastructure.
 
-The MFP MCP runs entirely on my machine. Auth is handled via your existing Chrome browser session — no credentials to store, no `.env` file. Nothing is logged, cached to cloud storage, or transmitted beyond the MFP website to fetch the data. Same philosophy as the Strava server: Claude talks to a local process, the local process talks to the data source, nothing else is in the loop.
+The MFP MCP runs entirely on my machine. Auth uses your existing Chrome browser session — `browser_cookie3` reads the cookies Chrome already holds for MFP, so you never hand this tool your password. You do need to set `MFP_USERNAME` in a `.env` file (your MFP profile username, not your email). A bearer token is then fetched from MFP and cached in SQLite for up to 8 days. Nothing is transmitted beyond MFP's own endpoints. Same philosophy as the Strava server: Claude talks to a local process, the local process talks to the data source, nothing else is in the loop.
 
 ---
 

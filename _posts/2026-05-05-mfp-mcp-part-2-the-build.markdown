@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Building a MyFitnessPal MCP: Cookies, Scrapers, and Six Tools"
-modified:
+title: "Building a MyFitnessPal MCP: Cookies, a Bearer Token, and Six Tools"
+modified: 2026-05-06
 categories: tech
-excerpt: "No public API, a Python 3.14 build failure, and a web scraper doing the work a real API should be doing. Here's how it came together."
+excerpt: "No public API, Cloudflare blocking the HTML scraper, and an undocumented mobile JSON API hiding in plain sight. Here's what the build actually looks like."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
 date: 2026-05-05T10:00:00-04:00
@@ -19,7 +19,11 @@ date: 2026-05-05T10:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part one](/tech/myfitnesspal-killed-their-api-heres-how-i-got-my-data-back/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my Python version refused to cooperate, and the part where the auth model changed under me mid-build.
+**Note:** This post was substantially updated in May 2026. The original version described an HTML scraping approach using `python-myfitnesspal`. After publishing, Cloudflare Bot Fight Mode on MFP's pages made that approach fail entirely. The implementation described here — using MFP's undocumented mobile JSON API — is what actually ships in the current version. [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) tells the full story of that transition.
+
+---
+
+In [part one](/tech/myfitnesspal-killed-their-api-heres-how-i-got-my-data-back/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my original approach stopped working entirely, and what replaced it.
 
 ---
 
@@ -27,144 +31,129 @@ In [part one](/tech/myfitnesspal-killed-their-api-heres-how-i-got-my-data-back/)
 
 Strava has a clean OAuth 2.0 API. MyFitnessPal shut theirs down in 2020 with no replacement.
 
-That means there are two paths forward: screen-scrape the web interface yourself, or use a library someone else already built that does the scraping for you. The `myfitnesspal` Python library (by [coddingtonbear](https://github.com/coddingtonbear)) takes the second approach. It logs into the MFP website using your credentials, maintains a session, and parses the diary HTML into structured Python objects.
+That means there are two paths forward: find an undocumented API and use it directly, or scrape the web interface. The `myfitnesspal` Python library does the latter — it logs into the MFP website, maintains a session, and parses the diary HTML into Python objects. I started there. It worked until Cloudflare made it stop working permanently. More on that in Part 3.
 
-It's not pretty in principle. In practice, it works, and it covers everything I care about — diary entries, macros, exercise logs, body measurements. That was enough to move forward.
+The current implementation doesn't scrape anything. It uses `api.myfitnesspal.com` — the same JSON API the MFP mobile app calls. No Cloudflare protection. Clean structured data.
 
 ---
 
 ### Stack
 
-Five dependencies, each doing one thing:
+Four dependencies:
 
 - **`mcp[cli]`** — Anthropic's Python SDK for building MCP servers
-- **`myfitnesspal`** — web scraper / unofficial API client for MFP
-- **`lxml>=5.0`** — HTML parser; `myfitnesspal` depends on it
-- **`browser-cookie3`** — reads Chrome's encrypted cookie store
-- **`click`** — CLI for the `auth` and `serve` commands
-- **`requests`** — used during auth to resolve the MFP username
+- **`browser-cookie3`** — reads Chrome's encrypted cookie store for auth
+- **`requests`** — HTTP client for both the token endpoint and the API
+- **`click`** — CLI for the `auth`, `serve`, and `cache` commands
 
-That `lxml` constraint took me longer than it should have.
+No HTML parser, no scraping library, no `lxml`. The original build needed all of those. The new one doesn't.
 
 ---
 
-### The Python 3.14 problem
+### Auth: how it actually works
 
-My Homebrew Python is 3.14. The `myfitnesspal` library depends on `lxml`, which has C extensions. `lxml` 4.x doesn't build against Python 3.14 — it uses a private CPython API (`_PyLong_AsByteArray`) that changed signatures in 3.14.
+MFP's HTML pages are protected by Cloudflare Bot Fight Mode — automated HTTP clients get 403s regardless of what headers or cookies you send. But two MFP endpoints are Cloudflare-free:
 
-The error looks like this:
+**Step 1 — get a bearer token.** The endpoint `www.myfitnesspal.com/user/auth_token?refresh=true` returns a JSON object with an OAuth bearer token, given valid session cookies. These cookies are the ones Chrome already holds from when you log into MFP normally. `browser_cookie3` reads them from Chrome's encrypted on-disk database:
 
-```
-error: too few arguments to function call, expected 6, have 5
-src/lxml/etree.c:269768
-```
+```python
+import browser_cookie3
 
-The fix is not to downgrade Python. The fix is to specify `lxml>=5.0`, which ships with pre-built wheels for Python 3.14:
-
-```
-pip install "lxml>=5.0" myfitnesspal mcp[cli]
+cj = browser_cookie3.chrome(domain_name="myfitnesspal.com")
+# cj is now a CookieJar containing everything Chrome has for myfitnesspal.com
 ```
 
-That resolved it immediately. I pinned this in `pyproject.toml` so it doesn't happen to anyone else who installs from the source:
+On macOS, Chrome encrypts its cookies using a key in the system Keychain under "Chrome Safe Storage." The first time `browser_cookie3` reads from it, macOS shows a dialog asking permission. You click Allow once. After that it's silent.
 
-```toml
-[project]
-dependencies = [
-    "mcp[cli]",
-    "myfitnesspal",
-    "lxml>=5.0",
-]
+The token request itself:
+
+```python
+s = requests.Session()
+s.cookies.update(cj)
+s.headers.update({"Accept": "application/json", "X-Requested-With": "XMLHttpRequest"})
+
+r = s.get("https://www.myfitnesspal.com/user/auth_token?refresh=true")
+data = r.json()
+# data["access_token"] — the bearer token, valid for 10 days
+# data["expires_in"]  — seconds until expiry
 ```
+
+**Step 2 — extract the user ID.** The bearer token is base64-encoded and contains the numeric user ID in its payload:
+
+```python
+import base64
+
+decoded = base64.b64decode(token + "==", validate=False).decode("utf-8", errors="replace")
+# Format: a:mfp-main-js:{user_id}::mfp-js:{timestamp}:{expiry}{signature}
+user_id = decoded.split(":")[2]
+```
+
+**Step 3 — query the mobile API.** `api.myfitnesspal.com` is the endpoint the MFP mobile app uses. It requires the bearer token and user ID as headers:
+
+```python
+api = requests.Session()
+api.headers.update({
+    "Authorization": f"Bearer {token}",
+    "mfp-client-id": "mfp-main-js",
+    "mfp-user-id": user_id,
+    "Accept": "application/json",
+})
+
+r = api.get(f"https://api.myfitnesspal.com/v2/diary?username={username}&date=2026-05-06")
+items = r.json()["items"]
+# Clean JSON: diary_meal, exercise_entry, steps_aggregate items
+```
+
+**Caching both layers.** Chrome's Keychain dialog fires every time `browser_cookie3` reads from it. The cookie cache (`~/.config/mfp-mcp/cookies.json`, mode 0600, 12-hour TTL) avoids this on every session start. The bearer token (10-day expiry from MFP) is cached in SQLite so we don't need to request a fresh one on every client instantiation. The practical result: run `mfp-mcp auth` once after installing, and data flows silently for days.
+
+The username comes from `MFP_USERNAME` in a `.env` file — this is required. The `mfp-mcp auth` command validates all of this and prints `Auth OK — logged in as: your_username` on success.
 
 ---
 
-### Auth: what I planned, what broke, and what I actually shipped
+### The Python 3.14 detail (now moot)
 
-The original plan was simple: pass username and password to the library, get a session, done. The `myfitnesspal` library (v1.14.0) supports exactly this:
+The original post had a long section about `lxml` not building on Python 3.14. That was a real headache at the time. Since the current implementation uses no HTML parser at all, the problem doesn't exist anymore. If you're installing from the current source, you won't hit it.
 
-```python
-client = myfitnesspal.Client(username, password=password, unit_aware=True)
-```
+---
 
-That plan fell apart quickly. MFP changed the HTML on their login page, and the library's form parser couldn't find the `authenticity_token` field it needed to submit credentials. Every call failed with an `IndexError` deep in the scraper.
+### The SQLite cache
 
-So I switched to the cookie-based approach: instead of logging in with credentials, borrow the session cookies from a browser that's already logged in. [`browser_cookie3`](https://github.com/borisbabic/browser_cookie3) does exactly that — it reads Chrome's encrypted cookie database and returns a `CookieJar` of the cookies for any given domain.
+The Strava MCP uses SQLite to cache API responses. The MFP MCP now does the same. Data cached in `~/.config/mfp-mcp/cache.db`:
 
-On macOS, Chrome encrypts its cookie database using a key stored in the system Keychain under "Chrome Safe Storage." When `browser_cookie3.chrome()` is called for the first time, macOS shows a dialog asking for permission to access that key. That's the one real friction point: you have to click Allow.
+| What | TTL |
+|---|---|
+| Bearer token | 8 days (token lives 10; refresh before expiry) |
+| Diary data per date | 30 minutes |
+| Measurements | 1 hour |
 
-Here's where it got tricky. The library's `Client` constructor only accepts `username` and `password` — there's no `cookiejar=` parameter. The solution is to create the client with `login=False` (skipping credential auth entirely) and inject the cookies directly into the underlying `requests.Session` that the library uses for all its HTTP calls:
+The `mfp-mcp cache stats` command shows how many entries are live versus expired. `mfp-mcp cache clear` wipes everything and forces fresh fetches on the next call.
 
-```python
-cj, username = load_auth()   # cookies from Chrome + username from MFP redirect
-client = myfitnesspal.Client(username=username, login=False, unit_aware=True)
-client.session.cookies.update(cj)
-```
-
-That second line is the key — every subsequent `session.get()` call the library makes will carry those cookies, so MFP sees an authenticated request without the library ever having gone through the login form.
-
-**Getting the username.** The diary URL is `/food/diary/USERNAME` — the library needs the username to build that path. With `login=False`, it never fetches the user's profile. The fix: after loading the cookies from Chrome, make one request to `/food/diary` and follow the redirect. MFP redirects logged-in users to their own diary, so the final URL contains the username:
-
-```python
-def _fetch_username(cj: CookieJar) -> str:
-    s = requests.Session()
-    s.cookies.update(cj)
-    r = s.get("https://www.myfitnesspal.com/food/diary", allow_redirects=True)
-    if "/food/diary/" in r.url:
-        return r.url.split("/food/diary/")[1].split("?")[0].rstrip("/")
-    raise RuntimeError("Could not resolve MFP username — are you logged into Chrome?")
-```
-
-**Caching both.** The Keychain dialog fires every time `browser_cookie3` reads from Chrome. To avoid this on every Claude Code session start, the auth module caches both the cookies and the resolved username together in `~/.config/mfp-mcp/cookies.json` (mode 0600, JSON not pickle — no arbitrary code execution risk). On subsequent starts, it loads from the file if it's less than 12 hours old, with a corruption fallback that deletes the cache and re-reads from Chrome:
-
-```python
-def load_auth() -> tuple[CookieJar, str]:
-    if COOKIE_CACHE.exists() and time.time() - COOKIE_CACHE.stat().st_mtime < _COOKIE_TTL:
-        try:
-            data = json.loads(COOKIE_CACHE.read_text())
-            return _list_to_cookiejar(data["cookies"]), data["username"]
-        except (json.JSONDecodeError, KeyError, OSError):
-            COOKIE_CACHE.unlink(missing_ok=True)
-    cj = browser_cookie3.chrome(domain_name="myfitnesspal.com")
-    username = _fetch_username(cj)
-    # os.open with 0o600 so the file is never world-readable, even briefly
-    fd = os.open(COOKIE_CACHE, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
-    with os.fdopen(fd, "w") as f:
-        json.dump({"username": username, "cookies": _cookies_to_list(cj)}, f)
-    return cj, username
-```
-
-The practical result: run `mfp-mcp auth` after install, click Allow once, and you're done. It prints `Auth OK — logged in as: your_username` on success. The server works silently across every Claude Code session after that until the cache expires.
-
-`unit_aware=True` tells the library to attach unit metadata to measurements (grams, calories, pounds) rather than returning bare floats. The catch: those typed objects — `Energy`, `Mass` — aren't JSON-serializable. A `_to_number()` helper extracts `.value` from each one before returning data from a tool.
+The TTL on diary data is short because it changes during the day — you're logging meals as you eat them. Measurements change less frequently, so an hour is fine there.
 
 ---
 
 ### The six tools
 
-Same design question as the Strava build: what will I actually ask Claude about?
-
 | Tool | What it returns |
 |---|---|
-| `get_food_diary` | Full diary for one day: every meal, every food item, macros per entry and per meal |
+| `get_food_diary` | Full diary for one day: meals with their nutrition totals |
 | `get_food_diary_range` | Daily totals only (no per-entry detail) for up to 30 days |
-| `get_exercise_diary` | Exercise and cardio log for one day |
-| `get_measurements` | Measurement history (weight, body fat, etc.) going back up to 365 days |
-| `get_nutrition_summary` | Aggregated and averaged macros for a date range — totals, daily averages, goals |
-| `get_goals` | Current daily nutrition targets from MFP |
+| `get_exercise_diary` | Exercise log for one day, grouped into a Cardio set |
+| `get_measurements` | Measurement history (weight, body fat, etc.) up to 365 days back |
+| `get_nutrition_summary` | Aggregated and averaged macros for a date range |
+| `get_goals` | Current daily nutrition targets (returns empty — see below) |
 
-A few design decisions worth noting:
+**A note on `get_food_diary`.** The original version of this tool returned per-entry detail — every individual food item with its own nutrition info. The mobile API's `/v2/diary` endpoint returns meal-level aggregates, not individual entries. You get the meal total for Lunch but not the breakdown of what made it up. For Claude's most common use cases — "how was my protein today?", "what's my calorie average this week?" — this is sufficient. For drilling into a specific meal, you'd use the MFP app directly.
 
-**Why `get_food_diary` and `get_food_diary_range` are separate.** A full diary for one day — every food item with nutrition info — is a lot of tokens. For trend questions ("how's my protein been this week?") you don't need that detail, you need daily totals. The range tool returns just those totals, keeping the context window manageable for multi-day queries.
+**A note on `get_goals`.** The mobile API stores macro goals as percentages rather than gram targets, and I haven't found a clean endpoint that returns the computed calorie goal. This tool returns an empty dict for now. The question it was designed to answer — "am I hitting my goals?" — is still answerable by looking at totals in context, it just requires Claude to reason about it rather than having explicit targets to compare against.
 
-**30-day cap on range queries.** The `myfitnesspal` library makes one HTTP request per day, which means 30 days is already 30 requests. I capped it there to avoid hitting MFP's rate limits or triggering any bot detection. If you need longer windows, call the tool twice.
-
-**Nutrition summary returns both totals and averages.** When Claude is answering a weekly question, it's more useful to say "you averaged 142g of protein per day" than "you consumed 996g over 7 days." The summary tool pre-computes both so Claude doesn't have to.
+**Why range and summary are separate.** Multi-day queries make one API call per day. A 30-day nutrition summary is 30 requests. The range tool caps at 30 days. If you need longer windows, call it twice with adjacent date ranges.
 
 ---
 
 ### The FastMCP pattern
 
-Tool registration is the same pattern as the Strava server — `@mcp.tool()` decorator, docstring describes the tool to Claude:
+Tool registration is the same as the Strava server — `@mcp.tool()` decorator, docstring as the tool description:
 
 ```python
 mcp = FastMCP(
@@ -186,16 +175,16 @@ def get_food_diary(date: str) -> dict:
 
     Returns a dict with keys:
     - date: the queried date (ISO 8601)
-    - meals: list of meals, each with name, entries (food items + nutrition), and meal totals
+    - meals: list of meals with name and nutrition totals
     - daily_totals: summed nutrition across all meals
-    - goals: daily nutrition targets
+    - goals: daily nutrition targets (currently empty)
     """
     d = _parse_date(date)
     day = MFPClient().get_date(d.year, d.month, d.day)
     ...
 ```
 
-Write the docstring for Claude, not for a human developer. Be explicit about argument formats, what the return structure looks like, and what the limits are. That docstring is what Claude reads when it decides whether and how to call the tool.
+Write the docstring for Claude, not for a human developer. Be explicit about argument formats, return structure, and limits. That docstring is what Claude reads when it decides whether and how to call the tool.
 
 ---
 
@@ -208,23 +197,22 @@ git clone https://github.com/IcaroBichir/mcp_myfitnesspal.git ~/mcp_myfitnesspal
 cd ~/mcp_myfitnesspal && python3 -m venv .venv
 .venv/bin/pip install -e .
 
-# Warm the cookie cache — macOS will show a Keychain dialog. Click Allow.
+# Add your MFP username (NOT your email — your profile username)
+echo "MFP_USERNAME=your_username" > .env
+
+# Warm the cookie + token cache
 .venv/bin/mfp-mcp auth
 
 claude mcp add -s user myfitnesspal \
   ~/mcp_myfitnesspal/.venv/bin/mfp-mcp -- serve
 ```
 
-The `auth` command reads cookies from Chrome, resolves your MFP username via the `/food/diary` redirect, and saves both to `~/.config/mfp-mcp/cookies.json`. It prints `Auth OK — logged in as: your_username` on success. Without it, the Keychain dialog appears on the first tool call inside Claude — run it here once, click Allow, and it won't appear again until the 12-hour cache expires.
-
-The `-s user` flag writes to `~/.claude.json` — the file Claude Code actually manages — and makes the server available globally across every session. Don't manually edit `.mcp.json` files; changes there won't be picked up properly across sessions.
-
-The README at [github.com/IcaroBichir/mcp_myfitnesspal](https://github.com/IcaroBichir/mcp_myfitnesspal) also has a single prompt you can paste into Claude Code to automate the whole setup.
+`auth` reads your Chrome cookies, fetches a bearer token, caches both, and prints `Auth OK — logged in as: your_username`. After that, `mfp-mcp serve` starts the MCP server and data flows silently. Run `mfp-mcp cache stats` to confirm the cache is warm.
 
 ---
 
 ### What's next
 
-Both MCP servers are running. Claude can now see my workouts (Strava) and my food log (MFP). The next step is the cross-source work — asking questions that require both datasets simultaneously.
+Both MCP servers are running. Claude can see workouts and food. The next step is the cross-source work — questions that require both datasets simultaneously — which the health dashboard makes concrete. That story is in [Dashboard Part 2](/tech/health-dashboard-part-2-wiring-in-nutrition/).
 
-That's the health dashboard post I'll write once I've actually used it for a few weeks. No point writing about query results I haven't seen yet.
+If you want the full technical story of why the original scraper stopped working and every bypass that failed before the API pivot, that's [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/).

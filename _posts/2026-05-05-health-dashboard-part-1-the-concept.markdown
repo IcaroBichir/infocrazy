@@ -92,7 +92,7 @@ There's no nutrition. I can see workouts. I cannot see calories, macros, or weig
 
 **More exercise depth.** Elevation, suffer score, PR flags, and eventually splits and heart rate zone breakdowns. The goal is a card that tells the full story of a workout at a glance — not just that I ran 10K, but that it was a hard effort, set a 5K best split, and cost 850 calories.
 
-**MyFitnessPal integration.** This is the other half. Once nutrition data is on the same screen as workout data, the questions get interesting. Calorie balance. Protein on training days versus rest days. Whether my intake is keeping up with my volume. The MFP MCP server is already built — it's just a matter of wiring it into the dashboard and designing the layout to show both at once.
+**MyFitnessPal integration.** This is the other half. Once nutrition data is on the same screen as workout data, the questions get interesting. Calorie balance. Protein on training days versus rest days. Whether my intake is keeping up with my volume. The MFP MCP server was already built — wiring it into the dashboard turned out to be the thing that revealed the MFP server was silently broken. [Part 2](/tech/health-dashboard-part-2-wiring-in-nutrition/) covers the nutrition UI and the Cloudflare debugging arc that came with it.
 
 **A weekly summary panel.** Not a chart, a brief. Seven days of workouts and nutrition distilled into five numbers and a sentence about the trend. The kind of thing you check on Sunday morning before planning the week ahead.
 
