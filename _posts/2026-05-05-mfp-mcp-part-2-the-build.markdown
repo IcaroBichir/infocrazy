@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building My Health Dashboard, Part 2: How I Built the MFP MCP"
+title: "Building a MyFitnessPal MCP: Cookies, Scrapers, and Six Tools"
 modified:
 categories: tech
 excerpt: "No public API, a Python 3.14 build failure, and a web scraper doing the work a real API should be doing. Here's how it came together."
@@ -19,7 +19,7 @@ date: 2026-05-05T10:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part one](/tech/building-my-health-dashboard-part-1-why-myfitnesspal-needed-an-mcp/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my Python version refused to cooperate, and the part where the auth model changed under me mid-build.
+In [part one](/tech/myfitnesspal-killed-their-api-heres-how-i-got-my-data-back/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my Python version refused to cooperate, and the part where the auth model changed under me mid-build.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building My Health Dashboard, Part 1: Why MyFitnessPal Needed an MCP"
+title: "MyFitnessPal Killed Their API. Here's How I Got My Data Back."
 modified:
 categories: tech
 excerpt: "I already wired Claude to my workouts. Nutrition was the obvious next piece — except MyFitnessPal killed their public API in 2020."
