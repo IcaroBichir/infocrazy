@@ -99,7 +99,7 @@ That's the destination. Right now I'm building the roads.
 
 My nutrition data is more personal than my workout data. Weight trends, eating patterns, bad weeks — this is not something I'm comfortable routing through third-party infrastructure.
 
-The MFP MCP runs entirely on my machine. Credentials live in a `.env` file. Nothing is logged, cached to cloud storage, or transmitted beyond the MFP website to fetch the data. Same philosophy as the Strava server: Claude talks to a local process, the local process talks to the data source, nothing else is in the loop.
+The MFP MCP runs entirely on my machine. Auth is handled via your existing Chrome browser session — no credentials to store, no `.env` file. Nothing is logged, cached to cloud storage, or transmitted beyond the MFP website to fetch the data. Same philosophy as the Strava server: Claude talks to a local process, the local process talks to the data source, nothing else is in the loop.
 
 ---
 

@@ -19,7 +19,7 @@ date: 2026-05-05T10:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part one](/tech/building-my-health-dashboard-part-1-why-myfitnesspal-needed-an-mcp/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my Python version refused to cooperate.
+In [part one](/tech/building-my-health-dashboard-part-1-why-myfitnesspal-needed-an-mcp/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my Python version refused to cooperate, and the part where the auth model changed under me mid-build.
 
 ---
 
@@ -35,14 +35,16 @@ It's not pretty in principle. In practice, it works, and it covers everything I 
 
 ### Stack
 
-Four dependencies, each doing one thing:
+Five dependencies, each doing one thing:
 
 - **`mcp[cli]`** — Anthropic's Python SDK for building MCP servers
 - **`myfitnesspal`** — web scraper / unofficial API client for MFP
-- **`python-dotenv`** — load credentials from a `.env` file
 - **`lxml>=5.0`** — HTML parser; `myfitnesspal` depends on it
+- **`browser-cookie3`** — reads Chrome's encrypted cookie store
+- **`click`** — CLI for the `auth` and `serve` commands
+- **`requests`** — used during auth to resolve the MFP username
 
-That last constraint took me longer than it should have.
+That `lxml` constraint took me longer than it should have.
 
 ---
 
@@ -60,7 +62,7 @@ src/lxml/etree.c:269768
 The fix is not to downgrade Python. The fix is to specify `lxml>=5.0`, which ships with pre-built wheels for Python 3.14:
 
 ```
-pip install "lxml>=5.0" myfitnesspal mcp[cli] python-dotenv
+pip install "lxml>=5.0" myfitnesspal mcp[cli]
 ```
 
 That resolved it immediately. I pinned this in `pyproject.toml` so it doesn't happen to anyone else who installs from the source:
@@ -70,42 +72,70 @@ That resolved it immediately. I pinned this in `pyproject.toml` so it doesn't ha
 dependencies = [
     "mcp[cli]",
     "myfitnesspal",
-    "python-dotenv",
     "lxml>=5.0",
 ]
 ```
 
 ---
 
-### Credentials
+### Auth: what I planned, what broke, and what I actually shipped
 
-Unlike Strava, there's no OAuth dance here. You supply your MFP username and password, the library logs in, the session is held in memory for the duration of the server process.
-
-I keep credentials in a `.env` file in the project directory:
-
-```
-MFP_USERNAME=your_myfitnesspal_username
-MFP_PASSWORD=your_myfitnesspal_password
-```
-
-The server loads them at startup via `python-dotenv`. The client itself is lazy-initialized — it doesn't log in until the first tool call, which means startup is fast and you'll see the auth error at call time (not silently at launch).
+The original plan was simple: pass username and password to the library, get a session, done. The `myfitnesspal` library (v1.14.0) supports exactly this:
 
 ```python
-_client = None
-
-def _get_client():
-    global _client
-    if _client is None:
-        import myfitnesspal
-        username = os.environ.get("MFP_USERNAME")
-        password = os.environ.get("MFP_PASSWORD")
-        if not username or not password:
-            raise RuntimeError("MFP_USERNAME and MFP_PASSWORD must be set")
-        _client = myfitnesspal.Client(username, password=password, unit_aware=True)
-    return _client
+client = myfitnesspal.Client(username, password=password, unit_aware=True)
 ```
 
-`unit_aware=True` tells the library to attach unit metadata to measurements — grams, calories, pounds — instead of returning bare floats.
+That plan fell apart quickly. MFP changed the HTML on their login page, and the library's form parser couldn't find the `authenticity_token` field it needed to submit credentials. Every call failed with an `IndexError` deep in the scraper.
+
+So I switched to the cookie-based approach: instead of logging in with credentials, borrow the session cookies from a browser that's already logged in. [`browser_cookie3`](https://github.com/borisbabic/browser_cookie3) does exactly that — it reads Chrome's encrypted cookie database and returns a `CookieJar` of the cookies for any given domain.
+
+On macOS, Chrome encrypts its cookie database using a key stored in the system Keychain under "Chrome Safe Storage." When `browser_cookie3.chrome()` is called for the first time, macOS shows a dialog asking for permission to access that key. That's the one real friction point: you have to click Allow.
+
+Here's where it got tricky. The library's `Client` constructor only accepts `username` and `password` — there's no `cookiejar=` parameter. The solution is to create the client with `login=False` (skipping credential auth entirely) and inject the cookies directly into the underlying `requests.Session` that the library uses for all its HTTP calls:
+
+```python
+cj, username = load_auth()   # cookies from Chrome + username from MFP redirect
+client = myfitnesspal.Client(username=username, login=False, unit_aware=True)
+client.session.cookies.update(cj)
+```
+
+That second line is the key — every subsequent `session.get()` call the library makes will carry those cookies, so MFP sees an authenticated request without the library ever having gone through the login form.
+
+**Getting the username.** The diary URL is `/food/diary/USERNAME` — the library needs the username to build that path. With `login=False`, it never fetches the user's profile. The fix: after loading the cookies from Chrome, make one request to `/food/diary` and follow the redirect. MFP redirects logged-in users to their own diary, so the final URL contains the username:
+
+```python
+def _fetch_username(cj: CookieJar) -> str:
+    s = requests.Session()
+    s.cookies.update(cj)
+    r = s.get("https://www.myfitnesspal.com/food/diary", allow_redirects=True)
+    if "/food/diary/" in r.url:
+        return r.url.split("/food/diary/")[1].split("?")[0].rstrip("/")
+    raise RuntimeError("Could not resolve MFP username — are you logged into Chrome?")
+```
+
+**Caching both.** The Keychain dialog fires every time `browser_cookie3` reads from Chrome. To avoid this on every Claude Code session start, the auth module caches both the cookies and the resolved username together in `~/.config/mfp-mcp/cookies.json` (mode 0600, JSON not pickle — no arbitrary code execution risk). On subsequent starts, it loads from the file if it's less than 12 hours old, with a corruption fallback that deletes the cache and re-reads from Chrome:
+
+```python
+def load_auth() -> tuple[CookieJar, str]:
+    if COOKIE_CACHE.exists() and time.time() - COOKIE_CACHE.stat().st_mtime < _COOKIE_TTL:
+        try:
+            data = json.loads(COOKIE_CACHE.read_text())
+            return _list_to_cookiejar(data["cookies"]), data["username"]
+        except (json.JSONDecodeError, KeyError, OSError):
+            COOKIE_CACHE.unlink(missing_ok=True)
+    cj = browser_cookie3.chrome(domain_name="myfitnesspal.com")
+    username = _fetch_username(cj)
+    # os.open with 0o600 so the file is never world-readable, even briefly
+    fd = os.open(COOKIE_CACHE, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "w") as f:
+        json.dump({"username": username, "cookies": _cookies_to_list(cj)}, f)
+    return cj, username
+```
+
+The practical result: run `mfp-mcp auth` after install, click Allow once, and you're done. It prints `Auth OK — logged in as: your_username` on success. The server works silently across every Claude Code session after that until the cache expires.
+
+`unit_aware=True` tells the library to attach unit metadata to measurements (grams, calories, pounds) rather than returning bare floats. The catch: those typed objects — `Energy`, `Mass` — aren't JSON-serializable. A `_to_number()` helper extracts `.value` from each one before returning data from a tool.
 
 ---
 
@@ -137,7 +167,14 @@ A few design decisions worth noting:
 Tool registration is the same pattern as the Strava server — `@mcp.tool()` decorator, docstring describes the tool to Claude:
 
 ```python
-mcp = FastMCP("MyFitnessPal")
+mcp = FastMCP(
+    "MyFitnessPal",
+    instructions=(
+        "Use these tools to retrieve the authenticated user's MyFitnessPal data. "
+        "Nutrition values are in grams, calories in kcal. "
+        "Always present macros clearly with labels: calories, protein, carbs, fat."
+    ),
+)
 
 @mcp.tool()
 def get_food_diary(date: str) -> dict:
@@ -148,14 +185,13 @@ def get_food_diary(date: str) -> dict:
         date: Date in YYYY-MM-DD format (e.g. "2026-05-01")
 
     Returns a dict with keys:
-    - date: the queried date
+    - date: the queried date (ISO 8601)
     - meals: list of meals, each with name, entries (food items + nutrition), and meal totals
     - daily_totals: summed nutrition across all meals
     - goals: daily nutrition targets
     """
     d = _parse_date(date)
-    client = _get_client()
-    day = client.get_date(d.year, d.month, d.day)
+    day = MFPClient().get_date(d.year, d.month, d.day)
     ...
 ```
 
@@ -165,21 +201,23 @@ Write the docstring for Claude, not for a human developer. Be explicit about arg
 
 ### Connecting to Claude Code
 
-Clone the repo, set up the venv, then register the server with one command:
+Make sure you're logged into myfitnesspal.com in Chrome, then:
 
 ```bash
 git clone https://github.com/IcaroBichir/mcp_myfitnesspal.git ~/mcp_myfitnesspal
 cd ~/mcp_myfitnesspal && python3 -m venv .venv
-.venv/bin/pip install "lxml>=5.0" "mcp[cli]" myfitnesspal python-dotenv
+.venv/bin/pip install -e .
+
+# Warm the cookie cache — macOS will show a Keychain dialog. Click Allow.
+.venv/bin/mfp-mcp auth
 
 claude mcp add -s user myfitnesspal \
-  ~/mcp_myfitnesspal/.venv/bin/python3 -- \
-  ~/mcp_myfitnesspal/server.py
+  ~/mcp_myfitnesspal/.venv/bin/mfp-mcp -- serve
 ```
 
-The `-s user` flag is the important part. It writes to `~/.claude.json` — the file Claude Code actually manages — and makes the server available globally across every session and directory. Don't manually edit `.mcp.json` files; changes there won't be picked up until the next restart and don't persist properly across sessions.
+The `auth` command reads cookies from Chrome, resolves your MFP username via the `/food/diary` redirect, and saves both to `~/.config/mfp-mcp/cookies.json`. It prints `Auth OK — logged in as: your_username` on success. Without it, the Keychain dialog appears on the first tool call inside Claude — run it here once, click Allow, and it won't appear again until the 12-hour cache expires.
 
-Credentials go in a `.env` file inside the cloned repo — `python-dotenv` loads them automatically at startup. Start a new Claude Code session after registering and the tools will be live.
+The `-s user` flag writes to `~/.claude.json` — the file Claude Code actually manages — and makes the server available globally across every session. Don't manually edit `.mcp.json` files; changes there won't be picked up properly across sessions.
 
 The README at [github.com/IcaroBichir/mcp_myfitnesspal](https://github.com/IcaroBichir/mcp_myfitnesspal) also has a single prompt you can paste into Claude Code to automate the whole setup.
 
