@@ -6,6 +6,7 @@ categories: tech
 excerpt: "Adding MFP nutrition to the dashboard revealed that the MFP MCP was silently broken. Fixing it took longer than building the nutrition UI. Here's both stories."
 tags: [health, dashboard, strava, myfitnesspal, python, streamlit, cloudflare, ai]
 comments: true
+authored_by: ai
 date: 2026-05-06T18:00:00-04:00
 ---
 

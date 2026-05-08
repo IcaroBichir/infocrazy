@@ -6,6 +6,7 @@ categories: tech
 excerpt: "I already wired Claude to my workouts. Nutrition was the obvious next piece — except MyFitnessPal killed their public API in 2020."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
+authored_by: ai
 date: 2026-05-05T09:00:00-04:00
 ---
 

@@ -6,6 +6,7 @@ categories: tech
 excerpt: "I have Strava and MyFitnessPal talking to Claude. The natural next step was a dashboard that puts everything in one place — not a chat, an actual screen I can glance at."
 tags: [health, dashboard, strava, myfitnesspal, python, streamlit, claude, ai]
 comments: true
+authored_by: ai
 date: 2026-05-05T18:00:00-04:00
 ---
 

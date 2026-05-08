@@ -6,6 +6,7 @@ categories: tech
 excerpt: "I've been using the Strava MCP server for a few weeks. Here are the prompts that worked, the things Claude found that surprised me, and how it's changed what I track."
 tags: [mcp, strava, python, claude, ai, running, training]
 comments: true
+authored_by: ai
 date: 2026-05-04T09:00:00-04:00
 ---
 

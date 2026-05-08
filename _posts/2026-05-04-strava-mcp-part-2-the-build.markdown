@@ -6,6 +6,7 @@ categories: tech
 excerpt: "OAuth is always the part nobody wants to explain. Here's the whole thing — plus how I designed the five tools and why I cut the other seven."
 tags: [mcp, strava, python, claude, ai, oauth]
 comments: true
+authored_by: ai
 date: 2026-05-04T09:00:00-04:00
 ---
 

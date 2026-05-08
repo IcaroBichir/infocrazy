@@ -6,6 +6,7 @@ categories: tech
 excerpt: "I used Claude Code to build a Python MCP server from scratch, then let GitHub Copilot review the PR. What happened next was the most useful code review I've had in a while."
 tags: [claude, copilot, ai, python, code-review, github]
 comments: true
+authored_by: ai
 date: 2026-05-04T10:00:00-04:00
 ---
 

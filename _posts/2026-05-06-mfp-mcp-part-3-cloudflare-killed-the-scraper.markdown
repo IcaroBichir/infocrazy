@@ -6,6 +6,7 @@ categories: tech
 excerpt: "The dashboard revealed that my published MFP implementation was broken. Every bypass failed. Then we found that api.myfitnesspal.com exists and has no Cloudflare protection at all."
 tags: [mcp, myfitnesspal, python, claude, ai, cloudflare, health, nutrition]
 comments: true
+authored_by: ai
 date: 2026-05-06T12:00:00-04:00
 ---
 

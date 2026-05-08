@@ -6,6 +6,7 @@ categories: tech
 excerpt: "I wanted to ask Claude 'how did my training go this month?' and get a real answer. That meant building something."
 tags: [mcp, strava, python, claude, ai, running]
 comments: true
+authored_by: ai
 date: 2026-04-28T09:00:00-04:00
 ---
 

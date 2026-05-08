@@ -6,6 +6,7 @@ categories: tech
 excerpt: "No public API, Cloudflare blocking the HTML scraper, and an undocumented mobile JSON API hiding in plain sight. Here's what the build actually looks like."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
+authored_by: ai
 date: 2026-05-05T10:00:00-04:00
 ---
 

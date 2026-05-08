@@ -6,6 +6,7 @@ categories: tech
 excerpt: "The server works. Now here's the honest list of what it still can't do, where I want to take it, and what building in public actually felt like."
 tags: [mcp, strava, python, claude, ai, open-source]
 comments: true
+authored_by: ai
 date: 2026-05-04T09:00:00-04:00
 ---
 
