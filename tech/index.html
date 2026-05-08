@@ -51,34 +51,29 @@ excerpt: "Icaro Bichir — Cloud Infrastructure Tech Lead with 10+ years in DevO
 <h2>Articles</h2>
 
 <div id="index">
-  {% assign grouped = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-  {% for year_group in grouped %}
-    {% assign ai_posts = year_group.items | where: "authored_by", "ai" %}
-    {% assign human_posts = year_group.items | where_exp: "post", "post.authored_by != 'ai'" %}
-    <div class="articles-year">
-      <h3 class="articles-year-heading">{{ year_group.name }}</h3>
-      <div class="articles-year-columns">
-        <div class="articles-col">
-          <span class="articles-col-label">AI</span>
-          {% for post in ai_posts %}
-            <article>
-              <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-              <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-            </article>
-          {% endfor %}
-          {% if ai_posts.size == 0 %}<p class="articles-col-empty">None yet.</p>{% endif %}
-        </div>
-        <div class="articles-col">
-          <span class="articles-col-label">Human</span>
-          {% for post in human_posts %}
-            <article>
-              <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-              <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-            </article>
-          {% endfor %}
-          {% if human_posts.size == 0 %}<p class="articles-col-empty">None yet.</p>{% endif %}
-        </div>
-      </div>
-    </div>
+  {% for post in site.posts %}
+    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% unless post.next %}
+      <h3>{{ year }}</h3>
+      {% if year == '2026' %}<h4>{{ post.date | date: '%B' }}</h4>{% endif %}
+    {% else %}
+      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+      {% if year != nyear %}
+        <h3>{{ year }}</h3>
+        {% if year == '2026' %}<h4>{{ post.date | date: '%B' }}</h4>{% endif %}
+      {% elsif year == '2026' %}
+        {% capture month %}{{ post.date | date: '%m' }}{% endcapture %}
+        {% capture nmonth %}{{ post.next.date | date: '%m' }}{% endcapture %}
+        {% if month != nmonth %}<h4>{{ post.date | date: '%B' }}</h4>{% endif %}
+      {% endif %}
+    {% endunless %}
+    <article>
+      {% if post.link %}
+        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+      {% else %}
+        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </article>
   {% endfor %}
 </div>

@@ -6,7 +6,6 @@ categories: tech
 excerpt: "I already wired Claude to my workouts. Nutrition was the obvious next piece — except MyFitnessPal killed their public API in 2020."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
-authored_by: ai
 date: 2026-05-05T09:00:00-04:00
 ---
 
@@ -77,10 +76,6 @@ The `myfitnesspal` Python library exists specifically for this situation. It aut
 What I didn't know when I first published this series: MFP runs Cloudflare Bot Fight Mode on their HTML pages. It lets browsers through and blocks everything else. The scraper worked initially because the session cookies held a short-lived Cloudflare clearance token. When that expired, every request started returning 403 with no path forward — not with Python requests, not with a Chrome-impersonating TLS stack, not with a real Chrome binary under automation.
 
 The replacement is cleaner, and ironically less fragile: MFP's undocumented mobile JSON API at `api.myfitnesspal.com`. No Cloudflare protection. Clean JSON responses. A bearer token you can get using your existing session cookies from a single endpoint on the main domain. The whole scraping layer is gone.
-
-<div class="human-aside">
-<p>myfitnesspal killed their public api in 2020. no announcement. no migration guide. no "here's how to get your data out before we shut it down." just gone. years of food logs, meal patterns, the bad weeks and the good weeks — I can see all of it in the app. I cannot ask a programmatic question about it. I cannot build on it. it's my health data, stored in a company's database, accessible through one interface they control. I want to be zen about this. I am not zen about this.</p>
-</div>
 
 [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is entirely about this — why the scraper broke, every bypass I tried, and how we ended up with a better implementation than the one I originally designed.
 

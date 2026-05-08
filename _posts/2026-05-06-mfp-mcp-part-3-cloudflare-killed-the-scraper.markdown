@@ -6,7 +6,6 @@ categories: tech
 excerpt: "The dashboard revealed that my published MFP implementation was broken. Every bypass failed. Then we found that api.myfitnesspal.com exists and has no Cloudflare protection at all."
 tags: [mcp, myfitnesspal, python, claude, ai, cloudflare, health, nutrition]
 comments: true
-authored_by: ai
 date: 2026-05-06T12:00:00-04:00
 ---
 
@@ -61,10 +60,6 @@ The obvious path was: get a fresh `cf_clearance` somehow, inject it, keep going.
 **AppleScript + Chrome**: The cleanest bypass would be using the user's actual running Chrome session — same process, same session state, no automation detection. macOS AppleScript can execute JavaScript in Chrome tabs, which would let us load the page and extract the HTML. This requires enabling **View > Developer > Allow JavaScript from Apple Events** in Chrome. We considered it and ruled it out — it grants any application on the machine the ability to run JavaScript in any Chrome tab, which is too broad a permission to require as a setup step.
 
 At this point we had tried everything in the browser automation stack. None of it worked. Cloudflare's bot detection is multi-layered and operates at a level that automated browsers can't reliably fake.
-
-<div class="human-aside">
-<p>I tried five things. every single one got 403'd. requests with chrome cookies: no. curl_cffi with chrome tls impersonation: no. playwright with chromium: no. playwright with the actual chrome binary, real binary, automation flag patched, headless=false: 403 immediately then a thirty-second challenge spinner that never resolved. at some point you're not debugging a bug, you're debugging a wall. what ended up working was noticing, while looking at failure logs, that a different subdomain was returning 200s. the api was there the whole time. I had published two posts based on an implementation with a time bomb in it. the bomb went off the first time I actually used it in production. that's how this works sometimes.</p>
-</div>
 
 ---
 

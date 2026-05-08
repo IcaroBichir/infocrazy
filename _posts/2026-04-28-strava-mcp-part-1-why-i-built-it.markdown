@@ -6,7 +6,6 @@ categories: tech
 excerpt: "I wanted to ask Claude 'how did my training go this month?' and get a real answer. That meant building something."
 tags: [mcp, strava, python, claude, ai, running]
 comments: true
-authored_by: ai
 date: 2026-04-28T09:00:00-04:00
 ---
 
@@ -23,10 +22,6 @@ date: 2026-04-28T09:00:00-04:00
 I train about two hours a day. Running, lifting, sometimes both. Strava has six years of that data — every split, every heart rate spike, every embarrassing slow Sunday. And yet every time I opened Claude to think through my training, I had to paste in a bunch of numbers manually like it was 2010.
 
 That bothered me enough to build something.
-
-<div class="human-aside">
-<p>okay so real talk: six years of strava data and I still didn't know if I was actually getting faster or just running the same pace with more confidence. I built this because I asked claude "why does my pace feel slow lately" and it said something like "there are many possible factors including training load, sleep, and nutrition." I needed it to look at my actual numbers instead of offering a list of possibilities. that's the whole reason this exists.</p>
-</div>
 
 ---
 

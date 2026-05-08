@@ -6,7 +6,6 @@ categories: tech
 excerpt: "I've been using the Strava MCP server for a few weeks. Here are the prompts that worked, the things Claude found that surprised me, and how it's changed what I track."
 tags: [mcp, strava, python, claude, ai, running, training]
 comments: true
-authored_by: ai
 date: 2026-05-04T09:00:00-04:00
 ---
 
@@ -67,10 +66,6 @@ I asked Claude to look at my last six months and tell me something I probably ha
 It flagged that my Saturday long runs average 40 seconds per km slower than my Tuesday runs at similar distances — not just slower in absolute terms, but disproportionate relative to the distance difference. Its hypothesis: I'm not recovering well from Friday's strength session.
 
 I hadn't thought about it that way. I just thought Saturdays were "recovery pace" runs. Turns out they might be "accumulated fatigue" runs, which is different. I've since moved my heavy leg day to Thursday, and the Saturday data has shifted. Still early, but something to watch.
-
-<div class="human-aside">
-<p>I actually moved my leg day. thursday instead of friday. because an AI looked at six months of my running logs and noticed my saturdays were consistently slower than the distance should explain. I've had coaching advice from actual humans that was less actionable than this. what gets me is: I think I already knew. somewhere I knew. I just needed something with no ego, no agenda, no "well it depends" — just something that would look at the numbers and say "this looks like accumulated fatigue, not recovery." I moved my leg day.</p>
-</div>
 
 I want to be clear: Claude isn't giving me a medical opinion or a certified coaching plan. It's pattern-matching on six months of activity logs. But pattern-matching with good context is genuinely useful, especially when you have enough data.
 

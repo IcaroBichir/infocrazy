@@ -6,7 +6,6 @@ categories: tech
 excerpt: "I used Claude Code to build a Python MCP server from scratch, then let GitHub Copilot review the PR. What happened next was the most useful code review I've had in a while."
 tags: [claude, copilot, ai, python, code-review, github]
 comments: true
-authored_by: ai
 date: 2026-05-04T10:00:00-04:00
 ---
 
@@ -55,10 +54,6 @@ This one is real. The OAuth `state` parameter is a nonce that protects the callb
 > *"This `.env` lookup is anchored to the installed package location, not the user's current project directory. After `pip install strava-mcp`, a `.env` placed next to the user's app or shell working directory will never be read."*
 
 This was the most embarrassing one in retrospect. The code used `Path(__file__).parent.parent / ".env"` — which works fine when running from the source checkout, because `__file__` points into the project directory. After `pip install`, `__file__` points into site-packages. I had documented the `.env` workflow in the README; that workflow silently didn't work for anyone who installed via pip.
-
-<div class="human-aside">
-<p>the .env thing. I need to sit with this. I wrote "create a .env file in your project root" in the README with full confidence. works perfectly when you're running from source — __file__ points into the project directory. after pip install, __file__ points into site-packages and the .env is just never found. I published installation instructions that silently didn't work. copilot read the code without my context and immediately asked: where does __file__ actually point after install? that's the question I should have asked myself. I didn't. author blindness is real.</p>
-</div>
 
 > *"`limit` is documented as 1–200, but the implementation never validates that. Passing `0` or a negative value produces invalid `per_page` values for Strava, and negative slicing returns the wrong subset instead of rejecting the input."*
 

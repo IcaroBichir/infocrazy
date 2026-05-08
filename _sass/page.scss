@@ -1321,6 +1321,13 @@ $button-size: 1.5rem;
    ========================================================================== */
 
 #index {
+  h3 {
+    margin: 0;
+    padding-bottom: .5em;
+    @include font-rem(28);
+    border-bottom: 1px solid $border-color;
+    color: $white;
+  }
   article {
     padding: 1.5em 0;
     border-bottom: 1px solid $border-color;
@@ -1335,99 +1342,6 @@ $button-size: 1.5rem;
     p+p {
       text-indent: 0;
     }
-  }
-}
-
-.articles-year {
-  margin-top: 3em;
-  &:first-child {
-    margin-top: 0;
-  }
-}
-
-.articles-year-heading {
-  @include font-rem(34);
-  font-weight: 800;
-  color: $white;
-  margin: 0 0 1.5em;
-  padding: 0 0 0 0.6em;
-  border-left: 4px solid $accent-warm;
-  line-height: 1;
-}
-
-.articles-year-columns {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  @media #{$medium} {
-    grid-template-columns: 1fr 1fr;
-    gap: 3em;
-  }
-}
-
-.articles-col {
-  min-width: 0;
-
-  @media #{$medium} {
-    &:first-child {
-      padding-right: 1.5em;
-      border-right: 1px solid $border-color;
-    }
-    &:last-child {
-      padding-left: 1.5em;
-    }
-  }
-}
-
-.articles-col-label {
-  display: block;
-  @include font-rem(11);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: $accent-warm;
-  font-weight: 700;
-  margin-bottom: 0.6em;
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid $border-color;
-}
-
-.articles-col-empty {
-  @include font-rem(14);
-  color: $text-muted;
-  font-style: italic;
-  padding: 1em 0;
-}
-
-/*
-   Human aside — the actual human interrupting the AI prose
-   ========================================================================== */
-
-.human-aside {
-  position: relative;
-  margin: 2.5em 0;
-  padding: 1.2em 1.5em;
-  background: rgba($accent-warm, 0.05);
-  border-left: 2px dashed rgba($accent-warm, 0.45);
-  border-radius: 0 6px 6px 0;
-
-  &::before {
-    content: '✍ human';
-    display: block;
-    @include font-rem(10);
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    color: $accent-warm;
-    font-weight: 700;
-    margin-bottom: 0.7em;
-    opacity: 0.75;
-  }
-
-  p {
-    @include font-rem(15);
-    color: $text-muted;
-    line-height: 1.8;
-    margin: 0;
-    font-style: italic;
   }
 }
 

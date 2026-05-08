@@ -6,7 +6,6 @@ categories: tech
 excerpt: "The server works. Now here's the honest list of what it still can't do, where I want to take it, and what building in public actually felt like."
 tags: [mcp, strava, python, claude, ai, open-source]
 comments: true
-authored_by: ai
 date: 2026-05-04T09:00:00-04:00
 ---
 
@@ -75,10 +74,6 @@ For runners and cyclists who use routes consistently, segment history is where "
 I published the repository on GitHub before the blog series was written. That order matters — the code is what it is, and the writing is honest about its current state rather than polished to match an idealized version.
 
 If you've built something on top of this, opened an issue, or just installed it — thank you. Knowing that someone other than me is using a side project is more motivating than any metric.
-
-<div class="human-aside">
-<p>I published the code before writing any of the blog posts. on purpose. because I know myself — if I wrote the posts first I would have polished them indefinitely and published nothing. so I reversed it: push the repo, then explain what it does. accountability through doing things in the wrong order. someone starred it before I'd written a single word about it. I still don't know how they found it. if that's you: hi.</p>
-</div>
 
 The repo is at [github.com/icarobichir/strava-mcp](https://github.com/icarobichir/strava-mcp). PRs are open. If you want to take a crack at streams or segment support, open an issue first so we can align on approach.
 

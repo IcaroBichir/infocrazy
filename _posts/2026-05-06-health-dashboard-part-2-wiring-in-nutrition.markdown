@@ -6,7 +6,6 @@ categories: tech
 excerpt: "Adding MFP nutrition to the dashboard revealed that the MFP MCP was silently broken. Fixing it took longer than building the nutrition UI. Here's both stories."
 tags: [health, dashboard, strava, myfitnesspal, python, streamlit, cloudflare, ai]
 comments: true
-authored_by: ai
 date: 2026-05-06T18:00:00-04:00
 ---
 
@@ -84,10 +83,6 @@ Auth OK — logged in as: icbichir1
 I asked Claude to call `get_food_diary` for today. It returned a diary with meals listed but zero nutritional data in each meal.
 
 The server was up. The tools were responding. The data was empty.
-
-<div class="human-aside">
-<p>opened the dashboard for the first time with nutrition wired up. the cards were there. every number was zero. calories: 0. protein: 0. carbs: 0. fat: 0. I checked auth — fine. I asked claude to call the tools directly — they returned results. the results just had zeros. it's a specific kind of broken where everything says it's working and the data is hollow. I stared at it longer than I should have before starting to pull threads. what followed was two debugging sessions and the discovery that cloudflare had been silently returning 403 pages that the library was quietly parsing as "no food logged today."</p>
-</div>
 
 ---
 

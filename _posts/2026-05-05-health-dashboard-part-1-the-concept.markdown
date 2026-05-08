@@ -6,7 +6,6 @@ categories: tech
 excerpt: "I have Strava and MyFitnessPal talking to Claude. The natural next step was a dashboard that puts everything in one place — not a chat, an actual screen I can glance at."
 tags: [health, dashboard, strava, myfitnesspal, python, streamlit, claude, ai]
 comments: true
-authored_by: ai
 date: 2026-05-05T18:00:00-04:00
 ---
 
@@ -27,10 +26,6 @@ The result is that I can have real conversations about my health data. That was 
 But conversations have a problem: you have to start them. Every time I want to see how my week is going, I open Claude and ask. It's fast, but it's still friction. I want something I can just *look at*.
 
 That's the dashboard.
-
-<div class="human-aside">
-<p>three apps. strava knows I ran. myfitnesspal knows what I ate. withings knows what I weigh. none of them know the other two exist. I open all three, look at my numbers, close all three, and still don't know if I'm actually doing okay. the apps have the data. what they don't have is each other. this dashboard is me refusing to be the manual translator between three siloed systems for the rest of my life.</p>
-</div>
 
 ---
 

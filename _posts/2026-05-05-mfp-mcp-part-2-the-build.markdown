@@ -6,7 +6,6 @@ categories: tech
 excerpt: "No public API, Cloudflare blocking the HTML scraper, and an undocumented mobile JSON API hiding in plain sight. Here's what the build actually looks like."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
-authored_by: ai
 date: 2026-05-05T10:00:00-04:00
 ---
 
@@ -106,10 +105,6 @@ items = r.json()["items"]
 ```
 
 **Caching both layers.** Chrome's Keychain dialog fires every time `browser_cookie3` reads from it. The cookie cache (`~/.config/mfp-mcp/cookies.json`, mode 0600, 12-hour TTL) avoids this on every session start. The bearer token (10-day expiry from MFP) is cached in SQLite so we don't need to request a fresh one on every client instantiation. The practical result: run `mfp-mcp auth` once after installing, and data flows silently for days.
-
-<div class="human-aside">
-<p>I want to be upfront: yes, this reads your chrome cookies. your mac asks permission and you click allow. I built this, I use it every day, and I still had a brief "wait, is this weird?" moment the first time I ran it on my own machine. it's your data, your cookies, your laptop — nothing goes anywhere except mfp's own api. but I think the feeling is worth naming. we're in a moment where the most practical way to access your own personal nutrition data involves reading your browser's encrypted on-disk storage. that's just where we are right now.</p>
-</div>
 
 The username comes from `MFP_USERNAME` in a `.env` file — this is required. The `mfp-mcp auth` command validates all of this and prints `Auth OK — logged in as: your_username` on success.
 
