@@ -108,6 +108,10 @@ def refresh_if_needed() -> dict:
 
 The 60-second buffer means you don't get a mid-conversation token expiry.
 
+<div class="human-aside">
+<p>the standard solution to "how do you catch a browser redirect in a cli tool" is: become a temporary web server. spin up localhost:8765, open the browser, wait for strava to redirect back, catch the auth code in a single http handler, then kill the server. twenty lines of python stdlib. completely normal. also completely insane if you describe it to someone outside software. I spent more time reading about this approach than actually implementing it. it's the correct answer and it sounds ridiculous. I love it.</p>
+</div>
+
 ---
 
 ### Designing the tools: from 12 to 5

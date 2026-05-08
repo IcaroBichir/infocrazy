@@ -78,6 +78,10 @@ What I didn't know when I first published this series: MFP runs Cloudflare Bot F
 
 The replacement is cleaner, and ironically less fragile: MFP's undocumented mobile JSON API at `api.myfitnesspal.com`. No Cloudflare protection. Clean JSON responses. A bearer token you can get using your existing session cookies from a single endpoint on the main domain. The whole scraping layer is gone.
 
+<div class="human-aside">
+<p>myfitnesspal killed their public api in 2020. no announcement. no migration guide. no "here's how to get your data out before we shut it down." just gone. years of food logs, meal patterns, the bad weeks and the good weeks — I can see all of it in the app. I cannot ask a programmatic question about it. I cannot build on it. it's my health data, stored in a company's database, accessible through one interface they control. I want to be zen about this. I am not zen about this.</p>
+</div>
+
 [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is entirely about this — why the scraper broke, every bypass I tried, and how we ended up with a better implementation than the one I originally designed.
 
 ---

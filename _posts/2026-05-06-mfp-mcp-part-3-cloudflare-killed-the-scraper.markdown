@@ -62,6 +62,10 @@ The obvious path was: get a fresh `cf_clearance` somehow, inject it, keep going.
 
 At this point we had tried everything in the browser automation stack. None of it worked. Cloudflare's bot detection is multi-layered and operates at a level that automated browsers can't reliably fake.
 
+<div class="human-aside">
+<p>I tried five things. every single one got 403'd. requests with chrome cookies: no. curl_cffi with chrome tls impersonation: no. playwright with chromium: no. playwright with the actual chrome binary, real binary, automation flag patched, headless=false: 403 immediately then a thirty-second challenge spinner that never resolved. at some point you're not debugging a bug, you're debugging a wall. what ended up working was noticing, while looking at failure logs, that a different subdomain was returning 200s. the api was there the whole time. I had published two posts based on an implementation with a time bomb in it. the bomb went off the first time I actually used it in production. that's how this works sometimes.</p>
+</div>
+
 ---
 
 ### Finding the actual API

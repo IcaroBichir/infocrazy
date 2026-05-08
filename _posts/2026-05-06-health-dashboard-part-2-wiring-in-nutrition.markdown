@@ -85,6 +85,10 @@ I asked Claude to call `get_food_diary` for today. It returned a diary with meal
 
 The server was up. The tools were responding. The data was empty.
 
+<div class="human-aside">
+<p>opened the dashboard for the first time with nutrition wired up. the cards were there. every number was zero. calories: 0. protein: 0. carbs: 0. fat: 0. I checked auth — fine. I asked claude to call the tools directly — they returned results. the results just had zeros. it's a specific kind of broken where everything says it's working and the data is hollow. I stared at it longer than I should have before starting to pull threads. what followed was two debugging sessions and the discovery that cloudflare had been silently returning 403 pages that the library was quietly parsing as "no food logged today."</p>
+</div>
+
 ---
 
 ### Diagnosing the actual problem

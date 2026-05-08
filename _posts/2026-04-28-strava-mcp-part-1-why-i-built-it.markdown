@@ -24,6 +24,10 @@ I train about two hours a day. Running, lifting, sometimes both. Strava has six 
 
 That bothered me enough to build something.
 
+<div class="human-aside">
+<p>okay so real talk: six years of strava data and I still didn't know if I was actually getting faster or just running the same pace with more confidence. I built this because I asked claude "why does my pace feel slow lately" and it said something like "there are many possible factors including training load, sleep, and nutrition." I needed it to look at my actual numbers instead of offering a list of possibilities. that's the whole reason this exists.</p>
+</div>
+
 ---
 
 ### The problem: Claude is smart but blind

@@ -1399,6 +1399,39 @@ $button-size: 1.5rem;
 }
 
 /*
+   Human aside — the actual human interrupting the AI prose
+   ========================================================================== */
+
+.human-aside {
+  position: relative;
+  margin: 2.5em 0;
+  padding: 1.2em 1.5em;
+  background: rgba($accent-warm, 0.05);
+  border-left: 2px dashed rgba($accent-warm, 0.45);
+  border-radius: 0 6px 6px 0;
+
+  &::before {
+    content: '✍ human';
+    display: block;
+    @include font-rem(10);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: $accent-warm;
+    font-weight: 700;
+    margin-bottom: 0.7em;
+    opacity: 0.75;
+  }
+
+  p {
+    @include font-rem(15);
+    color: $text-muted;
+    line-height: 1.8;
+    margin: 0;
+    font-style: italic;
+  }
+}
+
+/*
    Post / Article content
    ========================================================================== */
 

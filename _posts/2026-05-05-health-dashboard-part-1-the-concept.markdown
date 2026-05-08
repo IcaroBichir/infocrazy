@@ -28,6 +28,10 @@ But conversations have a problem: you have to start them. Every time I want to s
 
 That's the dashboard.
 
+<div class="human-aside">
+<p>three apps. strava knows I ran. myfitnesspal knows what I ate. withings knows what I weigh. none of them know the other two exist. I open all three, look at my numbers, close all three, and still don't know if I'm actually doing okay. the apps have the data. what they don't have is each other. this dashboard is me refusing to be the manual translator between three siloed systems for the rest of my life.</p>
+</div>
+
 ---
 
 ### The problem with the apps I already have

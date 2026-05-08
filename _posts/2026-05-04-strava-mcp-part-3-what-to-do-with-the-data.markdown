@@ -68,6 +68,10 @@ It flagged that my Saturday long runs average 40 seconds per km slower than my T
 
 I hadn't thought about it that way. I just thought Saturdays were "recovery pace" runs. Turns out they might be "accumulated fatigue" runs, which is different. I've since moved my heavy leg day to Thursday, and the Saturday data has shifted. Still early, but something to watch.
 
+<div class="human-aside">
+<p>I actually moved my leg day. thursday instead of friday. because an AI looked at six months of my running logs and noticed my saturdays were consistently slower than the distance should explain. I've had coaching advice from actual humans that was less actionable than this. what gets me is: I think I already knew. somewhere I knew. I just needed something with no ego, no agenda, no "well it depends" — just something that would look at the numbers and say "this looks like accumulated fatigue, not recovery." I moved my leg day.</p>
+</div>
+
 I want to be clear: Claude isn't giving me a medical opinion or a certified coaching plan. It's pattern-matching on six months of activity logs. But pattern-matching with good context is genuinely useful, especially when you have enough data.
 
 ---
