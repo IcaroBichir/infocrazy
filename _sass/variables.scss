@@ -2,66 +2,74 @@
    Sass variables
    ========================================================================== */
 
-/* 
+/*
    Typography
    ========================================================================== */
 
 $doc-font-size: 16;
 $doc-line-height: 26;
-$paragraph-indent: true !default;
-$base-font: 'PT Serif', serif;
-$heading-font: 'PT Sans Narrow', sans-serif;
-$code-font: Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+$paragraph-indent: false !default;
+$base-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$heading-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$code-font: 'JetBrains Mono', Monaco, 'Courier New', monospace;
 $alt-font: $base-font;
 
-/* 
-   Colors
+/*
+   Colors — Dark theme with warm accents
    ========================================================================== */
 
-$bodycolor      : #fff;
+$bodycolor      : #0c0c18;
 $body-color     : $bodycolor;
-$textcolor      : #333332;
+$textcolor      : #e0e0e8;
 $text-color     : $textcolor;
-$border-color   : $text-color;
-$basecolor 		  : #343434;	  
-$compcolor 		  : spin($basecolor, 180); 
-$bordercolor    : $basecolor;
+$border-color   : #2a2a40;
+$basecolor      : #0c0c18;
+$compcolor      : spin($basecolor, 180);
+$bordercolor    : #2a2a40;
 $white          : #fff;
-$black          : #111;
-$accentcolor    : $black;
+$black          : #08080f;
+$body-bg        : #0c0c18;
+$accentcolor    : #d4a053;
+$accent-warm    : #d4a053;
+$accent-hover   : #e8b86d;
+$surface-color  : #141428;
+$surface-light  : #1e1e35;
+$text-muted     : #9a9ab8;
 
 /* buttons */
-$primary			: $black;
-$success			: #5cb85c;
-$warning			: #dd8338;
-$danger				: #C64537;
-$info				  : #308cbc;
+$primary        : $accent-warm;
+$success        : #5cb85c;
+$warning        : #dd8338;
+$danger         : #C64537;
+$info           : #308cbc;
 
 /* brands */
 $facebook-color     : #3b5998;
 $flickr-color       : #ff0084;
 $foursquare-color   : #0cbadf;
 $google-plus-color  : #dd4b39;
-$instagram-color    : #4e433c;
-$linkedin-color     : #4875b4;
+$instagram-color    : #E1306C;
+$linkedin-color     : #0077b5;
 $pinterest-color    : #cb2027;
 $rss-color          : #fa9b39;
 $tumblr-color       : #2c4762;
 $twitter-color      : #55acee;
 $vimeo-color        : #1ab7ea;
 $youtube-color      : #ff3333;
+$tiktok-color       : #000000;
+$behance-color      : #1769ff;
 
 /* links */
-$linkcolor 		    : #343434;
+$linkcolor        : $accent-warm;
 $link-color       : $linkcolor;
-$linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited : lighten($linkcolorhover, 20);
-$linkcolorfocus 	: darken($linkcolorvisited, 10);
+$linkcolorhover   : $accent-hover;
+$linkcolorvisited : #bf8f4a;
+$linkcolorfocus   : $accent-hover;
 
-/* 
+/*
    Breakpoints
    ========================================================================== */
-   
+
 $micro            : "only screen and (min-width: 30em)";
 $small            : "only screen and (min-width: 37.5em)";
 $medium           : "only screen and (min-width: 48em)";

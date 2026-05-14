@@ -1,9 +1,12 @@
 <div class="navigation-wrapper">
 	<div class="site-name">
 		<a href="{{ site.url }}/">{{ site.title }}</a>
-	</div><!-- /.site-name -->
+	</div>
 	<div class="top-navigation">
 		<nav role="navigation" id="site-nav" class="nav">
+			<button type="button" role="button" id="menutoggle" class="navtoggle navicon-lines-button x" aria-hidden="true">
+				<span class="navicon-lines"></span><span class="sr-only">Menu</span>
+			</button>
 		    <ul>
 		        {% for link in site.data.navigation %}
 				    {% if link.url contains 'http' %}
@@ -11,9 +14,9 @@
 				        {% else %}
 				        {% assign domain = site.url %}
 				    {% endif %}
-				    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+				    <li><a href="{{ domain }}{{ link.url }}" {% if page.url == link.url %}class="active"{% endif %}{% if link.url contains 'http' %} target="_blank"{% endif %}>{{ link.title }}</a></li>
 				{% endfor %}
 		    </ul>
 		</nav>
-	</div><!-- /.top-navigation -->
-</div><!-- /.navigation-wrapper -->
+	</div>
+</div>
