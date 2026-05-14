@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="{{ site.url }}/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
+{% if page.preload_images %}{% for img in page.preload_images %}<link rel="preload" as="image" href="{{ img }}">
+{% endfor %}{% endif %}
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
