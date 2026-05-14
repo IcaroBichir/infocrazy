@@ -563,12 +563,46 @@ $button-size: 1.5rem;
   }
 }
 
+.ugc-video-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .ugc-intro-video iframe,
 .ugc-intro-video video {
   height: 500px;
   width: auto;
   border-radius: 16px;
   display: block;
+}
+
+.ugc-hit-play {
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  right: -90px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  @media #{$medium} {
+    display: flex;
+  }
+}
+
+.ugc-hit-play-arrow {
+  margin-left: 18px;
+}
+
+.ugc-hit-play-badge {
+  background: $accent-warm;
+  color: #0c0c18;
+  padding: 9px 20px;
+  border-radius: 24px;
+  font-weight: 700;
+  @include font-rem(14);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba($accent-warm, 0.25);
 }
 
 .ugc-intro-text {
