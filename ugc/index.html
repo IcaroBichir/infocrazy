@@ -11,12 +11,18 @@ excerpt: "Icaro Bichir — strategic UGC content, product storytelling, and hook
   <div class="ugc-intro-video">
     <div class="ugc-video-wrapper">
       <video
+        id="ugc-intro-video"
         src="/videos/ugc_intro.mp4"
         controls
         playsinline
-        preload="auto"
+        preload="none"
         poster="/videos/ugc_intro_poster.jpg"
       ></video>
+      <div class="ugc-play-overlay" id="ugc-play-overlay">
+        <button class="ugc-play-btn" aria-label="Play intro video">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+      </div>
       <div class="ugc-hit-play">
         <svg class="ugc-hit-play-arrow" width="56" height="52" viewBox="0 0 56 52" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M 50 46 C 44 30 22 8 4 6" stroke="#9a9ab8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
@@ -33,6 +39,23 @@ excerpt: "Icaro Bichir — strategic UGC content, product storytelling, and hook
     <p>I create direct response UGC across fitness &amp; wellness, health tech, fashion, pet, and collectibles — testimonials, skits, product demos, green screen, and B-Roll + VO. Every script, shot list, and edit is mine. And everything I make starts with a product I actually use.</p>
   </div>
 </section>
+<script>
+(function(){
+  var video = document.getElementById('ugc-intro-video');
+  var overlay = document.getElementById('ugc-play-overlay');
+  if (!video || !overlay) return;
+  overlay.addEventListener('click', function(){
+    video.play();
+    overlay.style.display = 'none';
+  });
+  video.addEventListener('play', function(){
+    overlay.style.display = 'none';
+  });
+  video.addEventListener('pause', function(){
+    overlay.style.display = 'flex';
+  });
+})();
+</script>
 
 <!-- ========== HERO INTRO ========== -->
 <div class="ugc-hero-intro">
