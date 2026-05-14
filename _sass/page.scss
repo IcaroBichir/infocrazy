@@ -27,6 +27,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .site-name {
@@ -45,18 +46,29 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    display: flex;
-    gap: 2em;
+    @media #{$small} {
+      display: flex;
+      gap: 2em;
+    }
   }
   li {
-    display: inline;
+    display: block;
     @include font-rem(14);
     text-transform: uppercase;
     letter-spacing: 1px;
+    @media #{$small} {
+      display: inline;
+    }
     a {
       color: $text-muted;
-      padding: 0.5em 0;
-      border-bottom: 2px solid transparent;
+      padding: 0.75em 0;
+      display: block;
+      border-bottom: 1px solid $border-color;
+      @media #{$small} {
+        padding: 0.5em 0;
+        display: inline;
+        border-bottom: 2px solid transparent;
+      }
       &:hover,
       &.active {
         color: $white;
@@ -96,8 +108,22 @@ body {
   max-height: 0;
   overflow: hidden;
   @include transition(max-height .4s);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(12, 12, 24, 0.97);
+  padding: 0 2em;
+  border-bottom: 1px solid $border-color;
+  z-index: 200;
   @media #{$small} {
+    position: static;
     max-height: 30em;
+    background: transparent;
+    padding: 0;
+    border: none;
+    z-index: auto;
+    overflow: visible;
   }
 }
 .nav .navtoggle.active + ul {
@@ -242,10 +268,13 @@ $button-size: 1.5rem;
     grid-template-columns: 280px 1fr auto;
   }
   .pillar-image {
-    height: auto;
-    aspect-ratio: 9 / 16;
-    width: 280px;
+    height: 260px;
+    width: 100%;
+    aspect-ratio: unset;
     @media #{$medium} {
+      height: auto;
+      aspect-ratio: 9 / 16;
+      width: 280px;
       border-radius: 12px 0 0 12px;
     }
     img {
