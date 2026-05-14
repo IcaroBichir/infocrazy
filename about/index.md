@@ -41,6 +41,6 @@ excerpt: "Icaro Bichir — UGC creator, photographer, and tech professional base
       <a href="https://linkedin.com/in/icarobichir" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-linkedin"></i> LinkedIn</a>
     </div>
 
-    <a href="mailto:imbcollabs@gmail.com" class="btn">Get in touch</a>
+    <a href="mailto:imbcollabs@gmail.com" class="btn">Book a project with me</a>
   </div>
 </div>

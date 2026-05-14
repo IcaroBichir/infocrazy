@@ -573,13 +573,14 @@ $button-size: 1.5rem;
 
 .ugc-video-wrapper {
   position: relative;
-  display: inline-block;
+  width: fit-content;
 }
 
 .ugc-intro-video iframe,
 .ugc-intro-video video {
   height: 500px;
   width: auto;
+  aspect-ratio: 9 / 16;
   border-radius: 16px;
   display: block;
 }
