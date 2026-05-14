@@ -469,7 +469,6 @@ $button-size: 1.5rem;
 .section-content h2 {
   @include font-rem(32);
   margin-bottom: 0.5em;
-  text-align: left;
   &::after {
     content: '';
     display: block;
@@ -613,7 +612,7 @@ $button-size: 1.5rem;
   display: none;
   position: absolute;
   bottom: 80px;
-  right: -100px;
+  right: -120px;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
@@ -676,7 +675,6 @@ $button-size: 1.5rem;
   color: $white;
   margin-bottom: 0.3em;
   letter-spacing: -1px;
-  text-align: left;
   @media #{$small} {
     @include font-rem(56);
   }
