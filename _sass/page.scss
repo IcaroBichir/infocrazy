@@ -535,6 +535,9 @@ $button-size: 1.5rem;
 
 .ugc-intro-video {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .ugc-intro-video-placeholder {
@@ -562,11 +565,10 @@ $button-size: 1.5rem;
 
 .ugc-intro-video iframe,
 .ugc-intro-video video {
-  width: 100%;
+  height: 500px;
+  width: auto;
   border-radius: 16px;
-  aspect-ratio: 9 / 16;
-  max-height: 500px;
-  object-fit: cover;
+  display: block;
 }
 
 .ugc-intro-text {
