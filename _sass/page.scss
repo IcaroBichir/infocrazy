@@ -650,7 +650,7 @@ $button-size: 1.5rem;
   display: none;
   position: absolute;
   bottom: 80px;
-  right: -120px;
+  right: -100px;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
@@ -1214,6 +1214,10 @@ $button-size: 1.5rem;
 /*
    UGC Portfolio — Testimonials
    ========================================================================== */
+
+.ugc-testimonials-section {
+  border-bottom: 1px solid $border-color;
+}
 
 .ugc-testimonials-grid {
   display: grid;
