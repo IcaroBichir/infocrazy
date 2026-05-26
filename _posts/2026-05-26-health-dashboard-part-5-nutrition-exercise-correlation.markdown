@@ -6,7 +6,7 @@ categories: tech
 excerpt: "The Nutrition × Exercise tab compares what you ate the day before against how your morning run went. Turns out prior-day carbs and calories are better predictors of pace than same-day food — for obvious reasons."
 tags: [health, dashboard, myfitnesspal, strava, running, python, streamlit, nutrition]
 comments: true
-date: 2026-05-26T18:00:00-04:00
+date: 2026-05-26T15:00:00-04:00
 ---
 
 <section id="table-of-contents" class="toc">
