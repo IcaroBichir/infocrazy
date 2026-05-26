@@ -39,7 +39,7 @@ I wanted something closer to a conversation. Not a one-shot query — an actual 
 
 The Model Context Protocol is an open standard Anthropic published for giving AI models structured access to external tools and data sources. Think of it like a USB interface — instead of each integration being custom-wired, MCP defines a common plug shape.
 
-When you build an MCP server, you're defining a set of **tools** that Claude can call. Claude decides when to use them, what arguments to pass, and how to incorporate the results into its response. From your side of the conversation, it looks seamless — you ask a question and Claude answers it, having fetched the relevant data in the background.
+When you build an MCP server, you're defining a set of **tools** that Claude can call. Claude decides when to use them, what arguments to pass, and how to incorporate the results into its response. From your side of the conversation, you ask a question and Claude answers it, having fetched the relevant data in the background.
 
 This is different from RAG, which shoves context into the prompt upfront. With tools, Claude pulls data on demand, which matters for interactive conversations where you don't know what you'll need ahead of time.
 

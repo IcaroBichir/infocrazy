@@ -172,6 +172,15 @@ Run `./start` instead of `streamlit run app.py`. If auth is stale, it tells you 
 
 **Last 7 Days** — full activity list with aggregate totals, plus a nutrition row: average daily calories, protein, carbs, fat across the 7-day window.
 
+![Today and Yesterday columns showing Strava activities alongside MFP nutrition cards](/images/dashboard-today-yesterday.png)
+*Today and Yesterday side by side — each column shows the morning run plus that day's nutrition totals.*
+
+![Last 7 Days tab with activity list and nutrition aggregate row](/images/dashboard-last-7-days.png)
+*Last 7 Days: aggregate exercise totals at the top, per-day activity list below, and a 7-day nutrition average row.*
+
+![Last 30 Days tab showing monthly aggregate totals and per-day breakdown](/images/dashboard-last-30-days.png)
+*Last 30 Days: same structure over the full month — useful for spotting volume trends that the weekly view smooths over.*
+
 What I actually see when I open it in the morning: yesterday's workout next to yesterday's food. Whether my protein tracked with my training volume. Whether my calorie intake was reasonable given what I burned. In one glance, without opening three apps.
 
 That's what the whole architecture was supposed to enable. It now enables it.
