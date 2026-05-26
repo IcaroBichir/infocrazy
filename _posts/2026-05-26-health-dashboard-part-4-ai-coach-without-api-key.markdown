@@ -53,8 +53,6 @@ claude -p "analyze this training data and give me coaching feedback"
 
 `-p` runs the prompt, streams the response to stdout, and exits. No conversation state, no interactive session. Prompt in, text out.
 
-That's the whole unlock.
-
 ---
 
 ### The architecture

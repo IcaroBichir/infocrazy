@@ -91,6 +91,9 @@ This is the whole point of having three windows. A 7-day view tells you what's h
 
 ---
 
+![Running tab showing 7-day individual run cards with splits and an AI coaching evaluation](/images/dashboard-running-tab.png)
+*The Running tab: 7-day section with expandable per-run cards (showing per-km splits below), followed by the AI coaching evaluation for the period.*
+
 ### The fetch pattern
 
 The running tab doesn't make extra API calls. It filters from `all_month` — the 30-day activity list already fetched for the main tabs — using a date slice:
