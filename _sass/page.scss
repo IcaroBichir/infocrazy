@@ -909,6 +909,87 @@ $button-size: 1.5rem;
 }
 
 /*
+   UGC Portfolio — Inline video controls
+   ========================================================================== */
+
+.ugc-video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.65em 0.9em;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+  border-radius: 0 0 8px 8px;
+}
+
+.ugc-ctrl-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  &:hover { opacity: 1; }
+}
+
+.ugc-progress-bar {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255,255,255,0.25);
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+
+  &::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: $accent-warm;
+    margin-top: -4.5px;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+  }
+  &::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.25);
+  }
+  &::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: $accent-warm;
+    border: none;
+    cursor: pointer;
+  }
+  &::-moz-range-progress {
+    height: 4px;
+    border-radius: 2px;
+    background: $accent-warm;
+  }
+}
+
+.ugc-ctrl-time {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.75);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/*
    UGC Portfolio — Why brands trust us
    ========================================================================== */
 
