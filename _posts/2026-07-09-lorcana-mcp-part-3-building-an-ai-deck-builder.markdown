@@ -6,7 +6,7 @@ categories: tech
 excerpt: "A heuristic deck-building engine, two bugs that made 60-card decks structurally impossible to reach, and a perf bug that turned a sub-second tool call into a 13-second one. Then: shipping it."
 tags: [mcp, lorcana, python, claude, ai, tcg, algorithms]
 comments: true
-date: 2026-07-14T09:00:00-04:00
+date: 2026-07-09T09:00:00-04:00
 ---
 
 <section id="table-of-contents" class="toc">

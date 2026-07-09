@@ -6,7 +6,7 @@ categories: tech
 excerpt: "A CSV enrichment pipeline, a fuzzy card-matching engine, and what happened when I audited two competing open-source Lorcana MCP servers instead of building in a vacuum."
 tags: [mcp, lorcana, python, claude, ai, tcg, testing]
 comments: true
-date: 2026-07-11T09:00:00-04:00
+date: 2026-07-05T09:00:00-04:00
 ---
 
 <section id="table-of-contents" class="toc">
