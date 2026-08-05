@@ -2,7 +2,7 @@
 layout: post
 title: "Claude Wrote It, Copilot Reviewed It"
 modified:
-categories: tech
+categories: blog
 excerpt: "I used Claude Code to build a Python MCP server from scratch, then let GitHub Copilot review the PR. What happened next was the most useful code review I've had in a while."
 tags: [claude, copilot, ai, python, code-review, github]
 comments: true
@@ -118,4 +118,4 @@ For a solo engineer building side projects in the gaps between other work, that'
 
 ---
 
-The PR is at [github.com/IcaroBichir/mcp_strava/pull/1](https://github.com/IcaroBichir/mcp_strava/pull/1) if you want to see the review comments and replies in context. The strava-mcp server itself is the subject of [a separate series](/tech/wiring-claude-to-my-running-shoes-part-1-why-i-built-it/) starting from why I built it.
+The PR is at [github.com/IcaroBichir/mcp_strava/pull/1](https://github.com/IcaroBichir/mcp_strava/pull/1) if you want to see the review comments and replies in context. The strava-mcp server itself is the subject of [a separate series](/blog/strava-mcp-part-1-why-i-built-it/) starting from why I built it.

@@ -2,7 +2,7 @@
 layout: post
 title: "Wiring Claude to My Running Shoes, Part 2: The Build"
 modified:
-categories: tech
+categories: blog
 excerpt: "OAuth is always the part nobody wants to explain. Here's the whole thing â€” plus how I designed the five tools and why I cut the other seven."
 tags: [mcp, strava, python, claude, ai, oauth]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-04T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part one](/tech/i-wired-claude-to-my-running-shoes-here-s-why/) I explained why I built this. Now let's talk about how.
+In [part one](/blog/strava-mcp-part-1-why-i-built-it/) I explained why I built this. Now let's talk about how.
 
 The full source is at [github.com/icarobichir/strava-mcp](https://github.com/icarobichir/strava-mcp). You can install it with `pip install strava-mcp` and be running in about 10 minutes. This post is for anyone who wants to understand what's inside.
 
@@ -222,4 +222,4 @@ Restart Claude after adding the config. The server starts on demand via stdio â€
 
 ---
 
-Next up: [what I've actually done with it](/tech/what-i-actually-did-with-my-strava-mcp-server/).
+Next up: [what I've actually done with it](/blog/strava-mcp-part-3-what-to-do-with-the-data/).

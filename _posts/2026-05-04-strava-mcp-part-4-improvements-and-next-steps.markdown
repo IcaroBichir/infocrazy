@@ -2,7 +2,7 @@
 layout: post
 title: "Wiring Claude to My Running Shoes, Part 4: What's Next"
 modified:
-categories: tech
+categories: blog
 excerpt: "The server works. Now here's the honest list of what it still can't do, where I want to take it, and what building in public actually felt like."
 tags: [mcp, strava, python, claude, ai, open-source]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-04T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-This is the last post in the series. [Part one](/tech/i-wired-claude-to-my-running-shoes-here-s-why/) was the why. [Part two](/tech/building-the-strava-mcp-server-oauth-tools-and-the-code/) was the build. [Part three](/tech/what-i-actually-did-with-my-strava-data-once-claude-could-read-it/) was what I learned from using it.
+This is the last post in the series. [Part one](/blog/strava-mcp-part-1-why-i-built-it/) was the why. [Part two](/blog/strava-mcp-part-2-the-build/) was the build. [Part three](/blog/strava-mcp-part-3-what-to-do-with-the-data/) was what I learned from using it.
 
 This one is the honest retrospective. What the v0.1 server can't do, what I'd add to it, and what I'd approach differently if I started today.
 

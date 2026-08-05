@@ -48,32 +48,7 @@ excerpt: "Icaro Bichir — Cloud Infrastructure Tech Lead with 10+ years in DevO
   <a href="https://linkedin.com/in/icarobichir" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-linkedin"></i> LinkedIn</a>
 </div>
 
-<h2>Articles</h2>
-
-<div id="index">
-  {% for post in site.posts %}
-    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-    {% unless post.next %}
-      <h3>{{ year }}</h3>
-      {% if year == '2026' %}<h4>{{ post.date | date: '%B' }}</h4>{% endif %}
-    {% else %}
-      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-      {% if year != nyear %}
-        <h3>{{ year }}</h3>
-        {% if year == '2026' %}<h4>{{ post.date | date: '%B' }}</h4>{% endif %}
-      {% elsif year == '2026' %}
-        {% capture month %}{{ post.date | date: '%m' }}{% endcapture %}
-        {% capture nmonth %}{{ post.next.date | date: '%m' }}{% endcapture %}
-        {% if month != nmonth %}<h4>{{ post.date | date: '%B' }}</h4>{% endif %}
-      {% endif %}
-    {% endunless %}
-    <article>
-      {% if post.link %}
-        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-      {% else %}
-        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-      {% endif %}
-    </article>
-  {% endfor %}
+<div class="cta-section">
+  <p class="cta-text">Read the build logs and write-ups behind these projects on the blog.</p>
+  <a href="{{ site.url }}/blog/" class="btn">Visit the Blog</a>
 </div>

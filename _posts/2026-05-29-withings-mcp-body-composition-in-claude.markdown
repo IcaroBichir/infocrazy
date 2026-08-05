@@ -2,7 +2,7 @@
 layout: post
 title: "Withings MCP: Body Composition Data in Claude"
 modified:
-categories: tech
+categories: blog
 excerpt: "A fourth MCP server, this time for the Withings scale. OAuth2 is clean, the API is stable, and the data — weight, fat%, muscle mass — slots naturally alongside Strava and MFP in any conversation about training."
 tags: [health, mcp, withings, python, bodycomposition, claude, anthropic]
 comments: true
@@ -149,4 +149,4 @@ After `auth`, the credentials are stored in `tokens.json` — `serve` never need
 
 ---
 
-The code is on GitHub at [IcaroBichir/mcp_withings](https://github.com/IcaroBichir/mcp_withings). The next post covers how body composition data was wired into the health dashboard — completing the picture that the [Nutrition × Exercise tab](/tech/health-dashboard-part-5-nutrition-exercise-correlation/) was missing.
+The code is on GitHub at [IcaroBichir/mcp_withings](https://github.com/IcaroBichir/mcp_withings). The next post covers how body composition data was wired into the health dashboard — completing the picture that the [Nutrition × Exercise tab](/blog/health-dashboard-part-5-nutrition-exercise-correlation/) was missing.

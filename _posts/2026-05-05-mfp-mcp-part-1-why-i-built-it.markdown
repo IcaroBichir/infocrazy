@@ -2,7 +2,7 @@
 layout: post
 title: "MyFitnessPal Killed Their API. Here's How I Got My Data Back."
 modified:
-categories: tech
+categories: blog
 excerpt: "I already wired Claude to my workouts. Nutrition was the obvious next piece — except MyFitnessPal killed their public API in 2020."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
@@ -19,11 +19,11 @@ date: 2026-05-05T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-**Update (May 2026):** After publishing this series, MFP's Cloudflare Bot Fight Mode started blocking all automated HTTP clients — including the `python-myfitnesspal` HTML scraper the original implementation depended on. The approach described in Part 2 no longer works as written. [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) tells that story and covers the replacement: MFP's undocumented mobile JSON API, which has no Cloudflare protection.
+**Update (May 2026):** After publishing this series, MFP's Cloudflare Bot Fight Mode started blocking all automated HTTP clients — including the `python-myfitnesspal` HTML scraper the original implementation depended on. The approach described in Part 2 no longer works as written. [Part 3](/blog/mfp-mcp-part-3-cloudflare-killed-the-scraper/) tells that story and covers the replacement: MFP's undocumented mobile JSON API, which has no Cloudflare protection.
 
 ---
 
-A few weeks ago I finished wiring Claude to Strava. Claude can now see every workout I've logged — distance, pace, heart rate, volume by week, how this month compares to last. That [series is here](/tech/wiring-claude-to-my-running-shoes-part-1-why-i-built-it/) if you want context.
+A few weeks ago I finished wiring Claude to Strava. Claude can now see every workout I've logged — distance, pace, heart rate, volume by week, how this month compares to last. That [series is here](/blog/strava-mcp-part-1-why-i-built-it/) if you want context.
 
 Almost immediately I hit the next problem. I'd ask something like: *"Is my protein intake keeping up with my training volume this month?"* and Claude had no way to answer it. Half the picture was there. The other half — what I eat — was completely dark.
 
@@ -77,7 +77,7 @@ What I didn't know when I first published this series: MFP runs Cloudflare Bot F
 
 The replacement is cleaner, and ironically less fragile: MFP's undocumented mobile JSON API at `api.myfitnesspal.com`. No Cloudflare protection. Clean JSON responses. A bearer token you can get using your existing session cookies from a single endpoint on the main domain. The whole scraping layer is gone.
 
-[Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is entirely about this — why the scraper broke, every bypass I tried, and how we ended up with a better implementation than the one I originally designed.
+[Part 3](/blog/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is entirely about this — why the scraper broke, every bypass I tried, and how we ended up with a better implementation than the one I originally designed.
 
 ---
 

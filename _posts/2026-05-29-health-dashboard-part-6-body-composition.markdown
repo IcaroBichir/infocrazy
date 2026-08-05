@@ -2,7 +2,7 @@
 layout: post
 title: "Health Dashboard Part 6: Closing the Loop with Body Composition"
 modified:
-categories: tech
+categories: blog
 excerpt: "Part 5 ended with a gap: nutrition, training load, and calorie balance — but no scale data. Withings body composition is now wired into every tab, and the AI coach evaluation in Nutrition × Exercise can finally ask whether the numbers are moving in the right direction."
 tags: [health, dashboard, withings, python, streamlit, bodycomposition, nutrition, strava]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-29T11:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-The final section of [Part 5](/tech/health-dashboard-part-5-nutrition-exercise-correlation/) listed what was still missing:
+The final section of [Part 5](/blog/health-dashboard-part-5-nutrition-exercise-correlation/) listed what was still missing:
 
 > **Weight trend.** MFP measurements (body weight over time) would complete the picture — you'd see nutrition, training load, and what the scale is doing in one place.
 
@@ -141,4 +141,4 @@ The running tab doesn't include body composition because the relationship there 
 
 The core loop — did what I ate and how I trained this month show up on the scale — is fully answerable now. The dashboard runs locally, requires no cloud infrastructure beyond the original Strava, MFP, and Withings accounts, and generates coaching evaluations via the Claude CLI already running in the terminal.
 
-[Part 4](/tech/health-dashboard-part-4-ai-coach-without-api-key/) covers the evaluation architecture in detail. The Withings MCP that powers the body composition data is described in the [companion post](/tech/withings-mcp-body-composition-in-claude/).
+[Part 4](/blog/health-dashboard-part-4-ai-coach-without-api-key/) covers the evaluation architecture in detail. The Withings MCP that powers the body composition data is described in the [companion post](/blog/withings-mcp-body-composition-in-claude/).

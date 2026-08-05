@@ -2,7 +2,7 @@
 layout: post
 title: "Building a MyFitnessPal MCP: Cookies, a Bearer Token, and Six Tools"
 modified: 2026-05-06
-categories: tech
+categories: blog
 excerpt: "No public API, Cloudflare blocking the HTML scraper, and an undocumented mobile JSON API hiding in plain sight. Here's what the build actually looks like."
 tags: [mcp, myfitnesspal, python, claude, ai, health, nutrition]
 comments: true
@@ -19,11 +19,11 @@ date: 2026-05-05T10:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-**Note:** This post was substantially updated in May 2026. The original version described an HTML scraping approach using `python-myfitnesspal`. After publishing, Cloudflare Bot Fight Mode on MFP's pages made that approach fail entirely. The implementation described here — using MFP's undocumented mobile JSON API — is what actually ships in the current version. [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) tells the full story of that transition.
+**Note:** This post was substantially updated in May 2026. The original version described an HTML scraping approach using `python-myfitnesspal`. After publishing, Cloudflare Bot Fight Mode on MFP's pages made that approach fail entirely. The implementation described here — using MFP's undocumented mobile JSON API — is what actually ships in the current version. [Part 3](/blog/mfp-mcp-part-3-cloudflare-killed-the-scraper/) tells the full story of that transition.
 
 ---
 
-In [part one](/tech/myfitnesspal-killed-their-api-heres-how-i-got-my-data-back/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my original approach stopped working entirely, and what replaced it.
+In [part one](/blog/mfp-mcp-part-1-why-i-built-it/) I explained why I built this and where it fits in the larger health dashboard I'm working toward. Now let's talk about the implementation — including the part where my original approach stopped working entirely, and what replaced it.
 
 ---
 
@@ -213,6 +213,6 @@ claude mcp add -s user myfitnesspal \
 
 ### What's next
 
-Both MCP servers are running. Claude can see workouts and food. The next step is the cross-source work — questions that require both datasets simultaneously — which the health dashboard makes concrete. That story is in [Dashboard Part 2](/tech/health-dashboard-part-2-wiring-in-nutrition/).
+Both MCP servers are running. Claude can see workouts and food. The next step is the cross-source work — questions that require both datasets simultaneously — which the health dashboard makes concrete. That story is in [Dashboard Part 2](/blog/health-dashboard-part-2-wiring-in-nutrition/).
 
-If you want the full technical story of why the original scraper stopped working and every bypass that failed before the API pivot, that's [Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/).
+If you want the full technical story of why the original scraper stopped working and every bypass that failed before the API pivot, that's [Part 3](/blog/mfp-mcp-part-3-cloudflare-killed-the-scraper/).
