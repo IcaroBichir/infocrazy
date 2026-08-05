@@ -2,7 +2,7 @@
 layout: post
 title: "Teaching Claude My Disney Lorcana Collection, Part 1: Why I Built It"
 modified:
-categories: tech
+categories: blog
 excerpt: "Three tabs open just to answer 'can I build this deck': TCGPlayer for what I own, dreamborn.ink for the deck, a wiki for the card text. So I gave Claude the collection instead."
 tags: [mcp, lorcana, python, claude, ai, tcg]
 comments: true
@@ -21,7 +21,7 @@ date: 2026-07-01T09:00:00-04:00
 
 I collect Disney Lorcana. A few hundred cards, spread across a dozen sets, with the usual TCG problem: I never actually know what I own relative to what I'd need to build something good. Every time I wanted to answer "can I build a competitive Amber/Sapphire deck with what I have," it turned into a three-tab exercise — TCGPlayer for my export and prices, dreamborn.ink for the deck builder, a wiki for card text and rulings I couldn't remember. Twenty minutes of tab-switching to answer one question.
 
-If you've been reading along, this is the same shape of problem I solved for training data with [strava-mcp](/tech/strava-mcp-part-1-why-i-built-it/) and nutrition with [mfp-mcp](/tech/mfp-mcp-part-1-why-i-built-it/): Claude is genuinely good at this kind of reasoning — curve analysis, format legality, cost math — it just can't see the data. So I built [lorcana-mcp](https://github.com/IcaroBichir/lorcana-mcp) to give it a real card database and my actual collection.
+If you've been reading along, this is the same shape of problem I solved for training data with [strava-mcp](/blog/strava-mcp-part-1-why-i-built-it/) and nutrition with [mfp-mcp](/blog/mfp-mcp-part-1-why-i-built-it/): Claude is genuinely good at this kind of reasoning — curve analysis, format legality, cost math — it just can't see the data. So I built [lorcana-mcp](https://github.com/IcaroBichir/lorcana-mcp) to give it a real card database and my actual collection.
 
 ---
 

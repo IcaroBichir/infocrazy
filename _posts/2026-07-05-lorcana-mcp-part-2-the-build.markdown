@@ -2,7 +2,7 @@
 layout: post
 title: "Teaching Claude My Disney Lorcana Collection, Part 2: The Build"
 modified:
-categories: tech
+categories: blog
 excerpt: "A CSV enrichment pipeline, a fuzzy card-matching engine, and what happened when I audited two competing open-source Lorcana MCP servers instead of building in a vacuum."
 tags: [mcp, lorcana, python, claude, ai, tcg, testing]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-07-05T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part one](/tech/lorcana-mcp-part-1-why-i-built-it/) I covered why I built this and why it needed no OAuth at all. This post is about what's actually inside.
+In [part one](/blog/lorcana-mcp-part-1-why-i-built-it/) I covered why I built this and why it needed no OAuth at all. This post is about what's actually inside.
 
 The full source is at [github.com/IcaroBichir/lorcana-mcp](https://github.com/IcaroBichir/lorcana-mcp). `pip install lorcana-mcp` gets you running in about a minute. This post is for anyone who wants to see how it works.
 
@@ -122,4 +122,4 @@ No auth step, no config file. Restart Claude after adding it, and the server sta
 
 ---
 
-Next up: [teaching it to actually build decks](/tech/lorcana-mcp-part-3-building-an-ai-deck-builder/) — and the two real bugs it took to get a heuristic deck builder to reliably hit 60 cards.
+Next up: [teaching it to actually build decks](/blog/lorcana-mcp-part-3-building-an-ai-deck-builder/) — and the two real bugs it took to get a heuristic deck builder to reliably hit 60 cards.

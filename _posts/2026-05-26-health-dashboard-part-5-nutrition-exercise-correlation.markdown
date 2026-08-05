@@ -2,7 +2,7 @@
 layout: post
 title: "Health Dashboard Part 5: Did Yesterday's Food Affect Today's Run?"
 modified:
-categories: tech
+categories: blog
 excerpt: "The Nutrition × Exercise tab compares what you ate the day before against how your morning run went. Turns out prior-day carbs and calories are better predictors of pace than same-day food — for obvious reasons."
 tags: [health, dashboard, myfitnesspal, strava, running, python, streamlit, nutrition]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-26T15:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-The Running tab built in [Part 3](/tech/health-dashboard-part-3-running-tab/) shows what happened during each run. The Nutrition × Exercise tab asks a different question: does what you ate yesterday predict how well you run today?
+The Running tab built in [Part 3](/blog/health-dashboard-part-3-running-tab/) shows what happened during each run. The Nutrition × Exercise tab asks a different question: does what you ate yesterday predict how well you run today?
 
 For morning runners the timing is obvious once you say it out loud. If you run at 8am, you haven't eaten yet. The fuel for that effort is whatever you consumed the day before — carbs, calories, protein for recovery. Same-day nutrition is mostly post-workout. The correlation that actually matters is prior-day food against that morning's performance.
 
@@ -107,4 +107,4 @@ All of these are incremental additions to infrastructure that already works. The
 
 ---
 
-The full dashboard as of this post: five tabs, both data sources, AI coaching evaluations on running and nutrition-exercise correlation, all running locally with no cloud dependencies beyond the original Strava and MFP accounts. [Part 4](/tech/health-dashboard-part-4-ai-coach-without-api-key/) covers the evaluation architecture in detail if you want to understand how `claude -p` becomes cached coaching text.
+The full dashboard as of this post: five tabs, both data sources, AI coaching evaluations on running and nutrition-exercise correlation, all running locally with no cloud dependencies beyond the original Strava and MFP accounts. [Part 4](/blog/health-dashboard-part-4-ai-coach-without-api-key/) covers the evaluation architecture in detail if you want to understand how `claude -p` becomes cached coaching text.

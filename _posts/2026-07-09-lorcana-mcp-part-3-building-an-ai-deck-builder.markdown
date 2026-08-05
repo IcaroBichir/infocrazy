@@ -2,7 +2,7 @@
 layout: post
 title: "Teaching Claude My Disney Lorcana Collection, Part 3: Building an AI Deck Builder"
 modified:
-categories: tech
+categories: blog
 excerpt: "A heuristic deck-building engine, two bugs that made 60-card decks structurally impossible to reach, and a perf bug that turned a sub-second tool call into a 13-second one. Then: shipping it."
 tags: [mcp, lorcana, python, claude, ai, tcg, algorithms]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-07-09T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part two](/tech/lorcana-mcp-part-2-the-build/) I covered the enrichment pipeline and the fuzzy card-matching engine. This post is about the feature that didn't exist a week ago: `build_deck`, a tool that actually assembles a legal decklist instead of just looking one up.
+In [part two](/blog/lorcana-mcp-part-2-the-build/) I covered the enrichment pipeline and the fuzzy card-matching engine. This post is about the feature that didn't exist a week ago: `build_deck`, a tool that actually assembles a legal decklist instead of just looking one up.
 
 ---
 

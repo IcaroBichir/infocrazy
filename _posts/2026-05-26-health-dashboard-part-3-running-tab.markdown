@@ -2,7 +2,7 @@
 layout: post
 title: "Health Dashboard Part 3: A Dedicated Running Tab"
 modified:
-categories: tech
+categories: blog
 excerpt: "The general activity tab was fine for an overview. Running needed its own screen — three time windows, per-km splits, and every metric Strava exposes. Here's what it took and what the data shows."
 tags: [health, dashboard, strava, running, python, streamlit, ai]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-26T10:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-[Part 2](/tech/health-dashboard-part-2-wiring-in-nutrition/) ended with a working dashboard: Strava activities, MFP nutrition, calorie balance, three tabs. The general tabs do their job. But running is the sport I track most deliberately, and the general view doesn't serve it well.
+[Part 2](/blog/health-dashboard-part-2-wiring-in-nutrition/) ended with a working dashboard: Strava activities, MFP nutrition, calorie balance, three tabs. The general tabs do their job. But running is the sport I track most deliberately, and the general view doesn't serve it well.
 
 You can't see how pace is trending over three weeks from a flat activity list. You can't tell whether last Thursday's easy run was genuinely easy (was HR actually low?) or just slow. You can't see weekly volume without counting manually. The general tab mixes runs with lifting sessions and walks — useful for a total load picture, not useful for understanding your running specifically.
 
@@ -124,4 +124,4 @@ Both of these need the streams endpoint — raw GPS/HR time-series per activity,
 
 For now, the tab tells you what most training platforms don't: the full picture of every run, across the three time windows that actually matter for making training decisions.
 
-The coaching analysis on top of all this — where Claude reads the data and writes an evaluation — is in [Part 4](/tech/health-dashboard-part-4-ai-coach-without-api-key/).
+The coaching analysis on top of all this — where Claude reads the data and writes an evaluation — is in [Part 4](/blog/health-dashboard-part-4-ai-coach-without-api-key/).

@@ -2,7 +2,7 @@
 layout: post
 title: "MFP MCP Part 3: Cloudflare Killed the Scraper (We Found a Better API)"
 modified:
-categories: tech
+categories: blog
 excerpt: "The dashboard revealed that my published MFP implementation was broken. Every bypass failed. Then we found that api.myfitnesspal.com exists and has no Cloudflare protection at all."
 tags: [mcp, myfitnesspal, python, claude, ai, cloudflare, health, nutrition]
 comments: true
@@ -174,4 +174,4 @@ The replacement is genuinely better. A proper JSON API is more stable than HTML 
 
 I wrote two blog posts based on an implementation that had a time bomb in it. The dashboard was what finally detonated it by actually exercising the full stack against real data.
 
-[Dashboard Part 2](/tech/health-dashboard-part-2-wiring-in-nutrition/) picks up from here — what the nutrition integration looks like on screen, and what it enables once both data sources are actually flowing.
+[Dashboard Part 2](/blog/health-dashboard-part-2-wiring-in-nutrition/) picks up from here — what the nutrition integration looks like on screen, and what it enables once both data sources are actually flowing.

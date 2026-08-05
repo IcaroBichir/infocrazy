@@ -2,7 +2,7 @@
 layout: post
 title: "Health Dashboard Part 2: Wiring In Nutrition (And the Cloudflare Detour)"
 modified:
-categories: tech
+categories: blog
 excerpt: "Adding MFP nutrition to the dashboard revealed that the MFP MCP was silently broken. Fixing it took longer than building the nutrition UI. Here's both stories."
 tags: [health, dashboard, strava, myfitnesspal, python, streamlit, cloudflare, ai]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-06T18:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-[Part 1](/tech/health-dashboard-the-concept-and-first-scratch/) ended with a working Strava dashboard and a clear gap: no nutrition. The whole reason for building the MFP MCP server was to fill that gap. This is the post where that actually happens — and where the MFP server turned out to be silently broken.
+[Part 1](/blog/health-dashboard-part-1-the-concept/) ended with a working Strava dashboard and a clear gap: no nutrition. The whole reason for building the MFP MCP server was to fill that gap. This is the post where that actually happens — and where the MFP server turned out to be silently broken.
 
 ---
 
@@ -92,7 +92,7 @@ A direct `requests` call to `https://www.myfitnesspal.com/food/diary/icbichir1` 
 
 The `cf_clearance` cookie that grants access to MFP's HTML pages expires in hours. When the cookie was fresh, the scraper worked. When it expired, every request failed — and the library had no way to renew it, because renewing requires solving a browser-based JavaScript challenge that no automated HTTP client can replicate reliably.
 
-[MFP MCP Part 3](/tech/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is the full account of that debugging session — the bypasses tried, why each failed, and what we eventually found. The short version: `api.myfitnesspal.com`, MFP's mobile API, has no Cloudflare protection. Getting a bearer token to use it requires one Cloudflare-free endpoint on the main domain. The entire scraping layer was replaced with clean JSON API calls.
+[MFP MCP Part 3](/blog/mfp-mcp-part-3-cloudflare-killed-the-scraper/) is the full account of that debugging session — the bypasses tried, why each failed, and what we eventually found. The short version: `api.myfitnesspal.com`, MFP's mobile API, has no Cloudflare protection. Getting a bearer token to use it requires one Cloudflare-free endpoint on the main domain. The entire scraping layer was replaced with clean JSON API calls.
 
 ---
 

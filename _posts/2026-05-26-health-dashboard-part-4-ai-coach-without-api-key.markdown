@@ -2,7 +2,7 @@
 layout: post
 title: "Health Dashboard Part 4: An AI Coach Without an API Key"
 modified:
-categories: tech
+categories: blog
 excerpt: "The Running tab ends with a cached coaching analysis. Generating it doesn't require ANTHROPIC_API_KEY in the dashboard env. It uses claude -p — the CLI already running in the terminal."
 tags: [health, dashboard, ai, claude, python, streamlit, running, anthropic]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-26T14:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-The [Running tab](/tech/health-dashboard-part-3-running-tab/) built in Part 3 ends with a coaching evaluation box for each time window — a few paragraphs analyzing pace trends, training load, recovery quality, and what to do next. The box renders immediately on page load. The content is specific to the actual numbers, not generic advice.
+The [Running tab](/blog/health-dashboard-part-3-running-tab/) built in Part 3 ends with a coaching evaluation box for each time window — a few paragraphs analyzing pace trends, training load, recovery quality, and what to do next. The box renders immediately on page load. The content is specific to the actual numbers, not generic advice.
 
 None of it requires `ANTHROPIC_API_KEY` set in the dashboard environment.
 

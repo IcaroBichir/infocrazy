@@ -2,7 +2,7 @@
 layout: post
 title: "Teaching Claude My Disney Lorcana Collection, Part 4: The Fix That Broke Things"
 modified:
-categories: tech
+categories: blog
 excerpt: "A promo-card mapping that looked verified, shipped clean, and would have quietly added the wrong cards to a real collection. The bug, the revert, and the actual fix — sourced from a real export instead of a screenshot."
 tags: [mcp, lorcana, python, claude, ai, tcg, debugging]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-07-30T16:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-In [part three](/tech/lorcana-mcp-part-3-building-an-ai-deck-builder/) I shipped `build_deck` and closed with a nice line about keeping tools honest about what they can't do. This post is about a case where I *thought* I'd verified something carefully, shipped it, and it was still wrong — wrong in a way that would have silently corrupted a real collection if one extra click had happened.
+In [part three](/blog/lorcana-mcp-part-3-building-an-ai-deck-builder/) I shipped `build_deck` and closed with a nice line about keeping tools honest about what they can't do. This post is about a case where I *thought* I'd verified something carefully, shipped it, and it was still wrong — wrong in a way that would have silently corrupted a real collection if one extra click had happened.
 
 ---
 
@@ -118,7 +118,7 @@ Not against the browser. Against an actual import. The regenerated dreamborn CSV
 
 ### Shipping it, again
 
-Same release mechanics as [part three](/tech/lorcana-mcp-part-3-building-an-ai-deck-builder/) — build, `twine upload`, then the GitHub device-code dance for the MCP Registry:
+Same release mechanics as [part three](/blog/lorcana-mcp-part-3-building-an-ai-deck-builder/) — build, `twine upload`, then the GitHub device-code dance for the MCP Registry:
 
 ```
 To authenticate, please:

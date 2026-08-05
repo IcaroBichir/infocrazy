@@ -2,7 +2,7 @@
 layout: post
 title: "Wiring Claude to My Running Shoes, Part 1: Why I Built It"
 modified:
-categories: tech
+categories: blog
 excerpt: "I wanted to ask Claude 'how did my training go this month?' and get a real answer. That meant building something."
 tags: [mcp, strava, python, claude, ai, running]
 comments: true

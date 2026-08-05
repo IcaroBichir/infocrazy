@@ -2,7 +2,7 @@
 layout: post
 title: "Wiring Claude to My Running Shoes, Part 3: Using the Data"
 modified:
-categories: tech
+categories: blog
 excerpt: "I've been using the Strava MCP server for a few weeks. Here are the prompts that worked, the things Claude found that surprised me, and how it's changed what I track."
 tags: [mcp, strava, python, claude, ai, running, training]
 comments: true
@@ -107,4 +107,4 @@ None of this is revolutionary. But having a tool that actually uses the data is 
 
 ---
 
-Next: [what I'd add, what I'd change, and where the project goes from here](/tech/strava-mcp-improvements-and-next-steps/).
+Next: [what I'd add, what I'd change, and where the project goes from here](/blog/strava-mcp-part-4-improvements-and-next-steps/).

@@ -2,7 +2,7 @@
 layout: post
 title: "Health Dashboard, Part 1: The Concept and First Scratch"
 modified:
-categories: tech
+categories: blog
 excerpt: "I have Strava and MyFitnessPal talking to Claude. The natural next step was a dashboard that puts everything in one place — not a chat, an actual screen I can glance at."
 tags: [health, dashboard, strava, myfitnesspal, python, streamlit, claude, ai]
 comments: true
@@ -19,7 +19,7 @@ date: 2026-05-05T18:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
-Over the past few weeks I built two MCP servers: [one for Strava](/tech/wiring-claude-to-my-running-shoes-part-1-why-i-built-it/) and [one for MyFitnessPal](/tech/building-my-health-dashboard-part-1-why-myfitnesspal-needed-an-mcp/). Both run locally. Both give Claude read access to data that was previously locked in apps.
+Over the past few weeks I built two MCP servers: [one for Strava](/blog/strava-mcp-part-1-why-i-built-it/) and [one for MyFitnessPal](/blog/mfp-mcp-part-1-why-i-built-it/). Both run locally. Both give Claude read access to data that was previously locked in apps.
 
 The result is that I can have real conversations about my health data. That was the goal, and it works.
 
@@ -92,7 +92,7 @@ There's no nutrition. I can see workouts. I cannot see calories, macros, or weig
 
 **More exercise depth.** Elevation, suffer score, PR flags, and eventually splits and heart rate zone breakdowns. The goal is a card that tells the full story of a workout at a glance — not just that I ran 10K, but that it was a hard effort, set a 5K best split, and cost 850 calories.
 
-**MyFitnessPal integration.** This is the other half. Once nutrition data is on the same screen as workout data, the questions get interesting. Calorie balance. Protein on training days versus rest days. Whether my intake is keeping up with my volume. The MFP MCP server was already built — wiring it into the dashboard turned out to be the thing that revealed the MFP server was silently broken. [Part 2](/tech/health-dashboard-part-2-wiring-in-nutrition/) covers the nutrition UI and the Cloudflare debugging arc that came with it.
+**MyFitnessPal integration.** This is the other half. Once nutrition data is on the same screen as workout data, the questions get interesting. Calorie balance. Protein on training days versus rest days. Whether my intake is keeping up with my volume. The MFP MCP server was already built — wiring it into the dashboard turned out to be the thing that revealed the MFP server was silently broken. [Part 2](/blog/health-dashboard-part-2-wiring-in-nutrition/) covers the nutrition UI and the Cloudflare debugging arc that came with it.
 
 **A weekly summary panel.** Not a chart, a brief. Seven days of workouts and nutrition distilled into five numbers and a sentence about the trend. The kind of thing you check on Sunday morning before planning the week ahead.
 
