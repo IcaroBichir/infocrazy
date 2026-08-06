@@ -825,6 +825,112 @@ $button-size: 1.5rem;
 }
 
 /*
+   UGC Portfolio — Brand partner logos
+   ========================================================================== */
+
+.ugc-partners-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2em;
+  margin-top: 1em;
+}
+
+.ugc-partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 84px;
+  padding: 1em 1.4em;
+  background: $white;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  @include transition(transform 0.2s ease);
+  img, svg {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.ugc-partner-logo--dark {
+  background: $surface-light;
+  border: 1px solid $border-color;
+  box-shadow: none;
+}
+
+.ugc-subsection-label {
+  display: block;
+  @include font-rem(13);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $text-muted;
+  font-weight: 700;
+  margin: 2.2em 0 1em;
+}
+
+/*
+   UGC Portfolio — By The Numbers
+   ========================================================================== */
+
+.ugc-stats-section {
+  text-align: center;
+}
+
+.ugc-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2em;
+  margin-top: 1.5em;
+  @media #{$medium} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ugc-stat-tile {
+  background: $surface-light;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 1.8em 1.2em;
+  @include transition(all 0.2s ease);
+  &:hover {
+    border-color: $accent-warm;
+    transform: translateY(-3px);
+  }
+}
+
+.ugc-stat-number {
+  display: block;
+  @include font-rem(40);
+  font-weight: 800;
+  color: $accent-warm;
+  letter-spacing: -1px;
+  @media #{$medium} {
+    @include font-rem(44);
+  }
+}
+
+.ugc-stat-label {
+  display: block;
+  @include font-rem(14);
+  color: $text-color;
+  margin-top: 0.5em;
+  line-height: 1.5;
+}
+
+.ugc-stat-note {
+  @include font-rem(13);
+  color: $text-muted;
+  margin-top: 1.8em;
+}
+
+/*
    UGC Portfolio — Sections
    ========================================================================== */
 
