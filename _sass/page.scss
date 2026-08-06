@@ -865,7 +865,18 @@ $button-size: 1.5rem;
   box-shadow: none;
 }
 
-.ugc-gear-label {
+.ugc-partner-logo--text {
+  padding: 1em 1.2em;
+  span {
+    @include font-rem(14);
+    color: $text-muted;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+  }
+}
+
+.ugc-subsection-label {
   display: block;
   @include font-rem(13);
   text-transform: uppercase;
