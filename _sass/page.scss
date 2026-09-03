@@ -2,6 +2,13 @@
    Page layout
    ========================================================================== */
 
+/* Site-wide type scale. Everything else is sized in rem off this root, so
+   nudging this value scales the whole site proportionally.
+   100% = 16px (browser default) · 106.25% = 17px (+1) · 112.5% = 18px (+2) */
+html {
+  font-size: 106.25%;
+}
+
 body {
   background-color: $bodycolor;
   background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('/images/bg-galaxy.jpg');
