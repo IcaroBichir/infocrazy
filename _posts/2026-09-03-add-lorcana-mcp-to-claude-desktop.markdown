@@ -9,11 +9,16 @@ comments: true
 date: 2026-09-03T18:30:00-04:00
 ---
 
-![Disney Lorcana Trading Card Game logo](/images/lorcana-tcg-logo.jpg)
+<style>
+.post-fig { text-align: center; margin: 1.75rem 0; }
+.post-fig img { max-width: 460px; width: 100%; height: auto; border-radius: 4px; }
+</style>
+
+<p class="post-fig"><img src="/images/lorcana-tcg-logo.jpg" alt="Disney Lorcana Trading Card Game logo"></p>
 
 [`lorcana-mcp`](https://github.com/IcaroBichir/lorcana-mcp) plugs Disney Lorcana card data — and your own TCGPlayer collection export — straight into Claude. Once it's connected you can just ask: *"enrich my collection,"* *"what's that card, big pete,"* *"is this deck legal,"* *"what do I need to finish this deck and what would it cost."* [Full background here](/blog/lorcana-mcp-part-1-why-i-built-it/).
 
-![Two Disney Lorcana cards from the Wilds Unknown set — You've Got a Friend in Me and Alien - True Believer](/images/lorcana-wilds-unknown-cards.jpg)
+<p class="post-fig"><img src="/images/lorcana-wilds-unknown-cards.jpg" alt="Two Disney Lorcana cards from the Wilds Unknown set — You've Got a Friend in Me and Alien - True Believer"></p>
 
 Setup takes about a minute.
 
@@ -48,7 +53,7 @@ Use the full absolute path — `~` and relative paths don't resolve from inside 
 - **`enriched_Lorcana_090326.csv`** — your collection plus ten columns it didn't have: ink, cost, card type, subtypes, strength, willpower, lore, inkable, keywords, and full ability text, along with format legality.
 - **`dreamborn_Lorcana_090326.csv`** — formatted to import straight into [dreamborn.ink](https://dreamborn.ink).
 
-![Enchanted-rarity Disney Lorcana cards — Diablo, Mufasa, and Elsa - Spirit of Winter — fanned over a dollar-sign background](/images/lorcana-enchanted-cards.jpg)
+<p class="post-fig"><img src="/images/lorcana-enchanted-cards.jpg" alt="Enchanted-rarity Disney Lorcana cards — Diablo, Mufasa, and Elsa - Spirit of Winter — fanned over a dollar-sign background"></p>
 
 From there it's a normal conversation, except Claude now knows exactly what you own:
 
