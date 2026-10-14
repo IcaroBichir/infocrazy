@@ -19,6 +19,9 @@ date: 2026-07-09T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 In [part two](/blog/lorcana-mcp-part-2-the-build/) I covered the enrichment pipeline and the fuzzy card-matching engine. This post is about the feature that didn't exist a week ago: `build_deck`, a tool that actually assembles a legal decklist instead of just looking one up.
 
 ---

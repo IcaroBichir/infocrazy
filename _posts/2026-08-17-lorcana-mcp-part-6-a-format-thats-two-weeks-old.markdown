@@ -19,6 +19,9 @@ date: 2026-08-17T15:50:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 In [part five](/blog/lorcana-mcp-part-5-just-say-a-card/) the story was about what "the MCP does it" actually means for a deck I asked for. This post is about a deck I asked for that the tool *couldn't* build at all — because the format didn't exist yet.
 
 ---

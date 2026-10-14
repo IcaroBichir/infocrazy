@@ -19,6 +19,21 @@ date: 2026-10-13T12:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+<style>
+.post-fig { text-align: center; margin: 1.75rem 0; }
+.post-fig img { max-width: 460px; width: 100%; height: auto; border-radius: 4px; }
+.post-fig.wide img { max-width: 100%; }
+.post-fig figcaption { font-size: 0.85em; opacity: 0.75; margin-top: 0.5rem; }
+</style>
+
+<figure class="post-fig">
+  <img src="/images/lorcana-hyperia-city-prerelease-box.png" alt="Disney Lorcana Hyperia City prerelease box, with Miguel from Coco on the cover" loading="lazy">
+  <figcaption>The Hyperia City prerelease kit.</figcaption>
+</figure>
+
+
 The **Hyperia City prerelease** is this Friday, October 16. It's Sealed: you open six booster packs at the store (about 72 cards), and you have roughly 45 minutes to turn them into a deck.
 
 Every deck tool in `lorcana-mcp` assumed Constructed rules up to now: 60 cards, at most 4 copies of a card, two inks, format legality. None of that applies on Friday. So [v2.6.0](https://github.com/IcaroBichir/lorcana-mcp/releases/tag/v2.6.0) adds one new tool built for it: `build_sealed_deck`.
@@ -26,6 +41,11 @@ Every deck tool in `lorcana-mcp` assumed Constructed rules up to now: 60 cards, 
 ---
 
 ### The rules it follows
+
+<figure class="post-fig wide">
+  <img src="/images/lorcana-hyperia-city-key-art.jpg" alt="Hyperia City key art: Miguel from Coco playing his guitar through a colorful city, with the Hyperia City logo" loading="lazy">
+  <figcaption>Every card in your pool comes from Hyperia City, Set 14.</figcaption>
+</figure>
 
 - **40-card minimum.**
 - **No ink limit.** You can play as many colors as you want.
@@ -44,10 +64,10 @@ Open your packs, then hand Claude the pool. There are two ways.
 
 One card per line, with a quantity if you have more than one copy. Names don't need to be exact:
 
-> *"Here's my prerelease pool, build me a deck:*
-> *2x Napoleon - Patient Watchdog*
-> *mickey best in town*
-> *Stacey Powerline Superfan*
+> *"Here's my prerelease pool, build me a deck:*<br>
+> *2x Napoleon - Patient Watchdog*<br>
+> *mickey best in town*<br>
+> *Stacey Powerline Superfan*<br>
 > *..."*
 
 Collector numbers work too. Every card has one printed at the bottom (`123/204 · EN · 14`), and it's often faster to type than the name:
@@ -116,6 +136,11 @@ Like `build_deck`, it's a heuristic: cost curve, stats, keywords, and Shift chai
 - It doesn't value Hyperia City's new **ink drop** mechanic yet. That's next on the list.
 
 Treat the deck as a fast first draft, so your 45 minutes go to tuning it instead of sorting cards into piles.
+
+<figure class="post-fig">
+  <img src="/images/lorcana-mcp-part-10-story.jpg" alt="Instagram story for Part 10: “Here's my prerelease pool” with the Hyperia City prerelease box" loading="lazy">
+  <figcaption>The story I posted for this release.</figcaption>
+</figure>
 
 ### Try it
 
