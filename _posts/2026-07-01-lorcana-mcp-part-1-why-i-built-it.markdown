@@ -6,6 +6,7 @@ categories: blog
 excerpt: "Three tabs open just to answer 'can I build this deck': TCGPlayer for what I own, dreamborn.ink for the deck, a wiki for the card text. So I gave Claude the collection instead."
 tags: [mcp, lorcana, python, claude, ai, tcg]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-07-01T09:00:00-04:00
 ---
 

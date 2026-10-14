@@ -6,6 +6,7 @@ categories: blog
 excerpt: "The short version: download one file, double-click it, and Claude can read your Lorcana collection, look up any card, check deck legality, and price out what a deck costs to finish. Here's the setup for Claude Desktop and every other MCP client, plus a walkthrough of enriching a collection export."
 tags: [mcp, lorcana, claude, tcg, how-to]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-09-03T18:30:00-04:00
 ---
 

@@ -11,7 +11,7 @@
 {% if page.hero_image %}
 {% assign slug = page.url | remove: '/' | replace: '/', '-' | downcase %}
 <div class="section-hero section-hero--{{ slug }}">
-  <img src="{{ site.url }}/images/{{ page.hero_image }}" alt="{{ page.title }}">
+  <img src="{{ site.url }}/images/{{ page.hero_image }}" alt="{{ page.title | escape }}">
   <div class="section-hero-overlay"></div>
   <div class="section-hero-content">
     <h1 class="section-title">{{ page.title }}</h1>

@@ -6,6 +6,7 @@ categories: blog
 excerpt: "The Hyperia City prerelease is this Friday: six packs, 45 minutes, build a 40-card deck. v2.6.0 adds build_sealed_deck. Send Claude a list or a photo of what you opened and get a deck back."
 tags: [mcp, lorcana, python, claude, ai, tcg, deckbuilding, sealed]
 comments: true
+og_image: og-lorcana-mcp-part-10.jpg
 date: 2026-10-13T12:00:00-04:00
 ---
 

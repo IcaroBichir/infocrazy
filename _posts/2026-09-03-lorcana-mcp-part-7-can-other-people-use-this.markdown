@@ -6,6 +6,7 @@ categories: blog
 excerpt: "The project has been on PyPI and the MCP Registry for months, so I assumed \"let other people use it\" was already done. It wasn't — being a published package says nothing about whether a non-programmer can install it, and nothing at all about ChatGPT. The fix was a one-click bundle and a real install guide, plus accepting one hard line I can't design around."
 tags: [mcp, lorcana, python, claude, ai, tcg, distribution]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-09-03T17:10:00-04:00
 ---
 

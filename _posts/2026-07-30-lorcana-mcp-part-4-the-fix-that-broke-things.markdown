@@ -6,6 +6,7 @@ categories: blog
 excerpt: "A promo-card mapping that looked verified, shipped clean, and would have quietly added the wrong cards to a real collection. The bug, the revert, and the actual fix — sourced from a real export instead of a screenshot."
 tags: [mcp, lorcana, python, claude, ai, tcg, debugging]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-07-30T16:00:00-04:00
 ---
 

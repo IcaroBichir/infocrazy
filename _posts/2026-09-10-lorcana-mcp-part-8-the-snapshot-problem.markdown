@@ -6,6 +6,7 @@ categories: blog
 excerpt: "It started as \"here are some tournament results, add them.\" It turned into a release and a half, because every part of the tool that hands back a confident answer from data I bundled at build time was quietly out of date — and none of them said so. A mislabel that survived three passes, six different Milo Thatches, decklists that didn't add up to 60, and a card database one failed fetch from useless."
 tags: [mcp, lorcana, python, claude, ai, tcg, metagame]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-09-10T17:30:00-04:00
 ---
 
