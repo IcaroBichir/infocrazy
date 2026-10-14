@@ -34,7 +34,6 @@ excerpt: "Icaro Bichir — UGC creator, photographer, and tech professional base
 
     <div class="social-links">
       <a href="https://www.instagram.com/icarobichir" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-instagram"></i> @icarobichir</a>
-      <a href="https://www.tiktok.com/@icarobichir" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-play-circle"></i> @icarobichir TikTok</a>
       <a href="https://www.instagram.com/shelftherapystudio" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-instagram"></i> @shelftherapystudio</a>
       <a href="https://www.tiktok.com/@shelftherapystudio" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-play-circle"></i> @shelftherapystudio TikTok</a>
       <a href="https://www.behance.net/icarobichir1" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa fa-behance"></i> Behance</a>
