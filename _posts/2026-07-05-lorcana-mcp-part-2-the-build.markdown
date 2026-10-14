@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 2: The Build"
+title: "The Build: A Lorcana MCP Server for Claude"
 modified:
 categories: blog
 excerpt: "A CSV enrichment pipeline, a fuzzy card-matching engine, and what happened when I audited two competing open-source Lorcana MCP servers instead of building in a vacuum."
 tags: [mcp, lorcana, python, claude, ai, tcg, testing]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-07-05T09:00:00-04:00
 ---
 

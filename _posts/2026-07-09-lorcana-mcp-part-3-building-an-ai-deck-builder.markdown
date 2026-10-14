@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 3: Building an AI Deck Builder"
+title: "Building an AI Deck Builder for Disney Lorcana"
 modified:
 categories: blog
 excerpt: "A heuristic deck-building engine, two bugs that made 60-card decks structurally impossible to reach, and a perf bug that turned a sub-second tool call into a 13-second one. Then: shipping it."
 tags: [mcp, lorcana, python, claude, ai, tcg, algorithms]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-07-09T09:00:00-04:00
 ---
 

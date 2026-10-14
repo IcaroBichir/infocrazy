@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 6: A Deck Builder for a Format That's Two Weeks Old"
+title: "A Lorcana Deck Builder for a Format That's Two Weeks Old"
 modified:
 categories: blog
 excerpt: "Ravensburger shipped a brand-new multiplayer singleton format while this project was already running. Teaching the MCP server to build for it meant fetching data that didn't exist a month ago, finding a scoring bug that quietly dropped the headline card from its own deck, and fixing a UX mistake I only caught because I watched someone else hit it live."
 tags: [mcp, lorcana, python, claude, ai, tcg, deckbuilding]
 comments: true
+og_image: og-lorcana-mcp-series.jpg
 date: 2026-08-17T15:50:00-04:00
 ---
 

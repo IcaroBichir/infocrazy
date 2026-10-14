@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 9: \"Build Me a Princess Deck\""
+title: "\"Build Me a Princess Deck\": Themed Lorcana Decks with Claude"
 modified:
 categories: blog
 excerpt: "The deck builder only understood ink colors. People don't ask for decks that way — they ask for a Princess deck, a Detective deck, a Stitch deck. And Hyperia City's cards were sitting in the database, invisible to it for another two weeks. v2.5.0 adds themed decks and a preview mode for unreleased sets, and this is how to use both."
 tags: [mcp, lorcana, python, claude, ai, tcg, deckbuilding]
 comments: true
+og_image: og-lorcana-mcp-part-9.jpg
 date: 2026-10-06T10:00:00-04:00
 ---
 
