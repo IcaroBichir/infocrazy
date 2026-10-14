@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 3: Building an AI Deck Builder"
+title: "Building an AI Deck Builder for Disney Lorcana"
 modified:
 categories: blog
 excerpt: "A heuristic deck-building engine, two bugs that made 60-card decks structurally impossible to reach, and a perf bug that turned a sub-second tool call into a 13-second one. Then: shipping it."

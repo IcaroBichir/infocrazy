@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 7: \"Can Other People Use This?\""
+title: "\"Can Other People Use This?\": Making a Lorcana MCP Installable"
 modified:
 categories: blog
 excerpt: "The project has been on PyPI and the MCP Registry for months, so I assumed \"let other people use it\" was already done. It wasn't — being a published package says nothing about whether a non-programmer can install it, and nothing at all about ChatGPT. The fix was a one-click bundle and a real install guide, plus accepting one hard line I can't design around."

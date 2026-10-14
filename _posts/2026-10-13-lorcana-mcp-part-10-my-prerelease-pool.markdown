@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 10: \"Here's My Prerelease Pool\""
+title: "\"Here's My Prerelease Pool\": A Sealed Deck Builder for Lorcana"
 modified:
 categories: blog
 excerpt: "The Hyperia City prerelease is this Friday: six packs, 45 minutes, build a 40-card deck. v2.6.0 adds build_sealed_deck. Send Claude a list or a photo of what you opened and get a deck back."

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 4: The Fix That Broke Things"
+title: "The Fix That Broke Things: A Lorcana Promo-Card Bug"
 modified:
 categories: blog
 excerpt: "A promo-card mapping that looked verified, shipped clean, and would have quietly added the wrong cards to a real collection. The bug, the revert, and the actual fix — sourced from a real export instead of a screenshot."

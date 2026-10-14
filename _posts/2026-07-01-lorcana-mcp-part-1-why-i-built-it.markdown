@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 1: Why I Built It"
+title: "Why I Built It: Teaching Claude My Disney Lorcana Collection"
 modified:
 categories: blog
 excerpt: "Three tabs open just to answer 'can I build this deck': TCGPlayer for what I own, dreamborn.ink for the deck, a wiki for the card text. So I gave Claude the collection instead."

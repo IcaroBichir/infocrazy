@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teaching Claude My Disney Lorcana Collection, Part 5: Just Say a Card"
+title: "Just Say a Card: Fuzzy Lorcana Card Lookup for Claude"
 modified:
 categories: blog
 excerpt: "I asked for a Ruby/Steel deck built around one newly-pulled card. What actually happened wasn't \"the MCP built it\" — build_deck handed over a rough first draft that got thrown out entirely once real synergy-reading started. The gap between those two is the actual story."
