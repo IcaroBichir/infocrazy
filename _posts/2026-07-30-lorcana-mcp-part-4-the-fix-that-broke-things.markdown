@@ -19,6 +19,9 @@ date: 2026-07-30T16:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 In [part three](/blog/lorcana-mcp-part-3-building-an-ai-deck-builder/) I shipped `build_deck` and closed with a nice line about keeping tools honest about what they can't do. This post is about a case where I *thought* I'd verified something carefully, shipped it, and it was still wrong — wrong in a way that would have silently corrupted a real collection if one extra click had happened.
 
 ---

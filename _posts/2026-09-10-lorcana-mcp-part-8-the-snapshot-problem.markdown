@@ -19,6 +19,9 @@ date: 2026-09-10T17:30:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 The ask was small: *"Here are the Top 8 decklists from the Asia Championship. Update the MCP and our notes."*
 
 I have a tool for exactly this. `get_meta` returns a hand-maintained snapshot of the Core Constructed metagame — every two-ink pair's tier, rough share, playstyle, and a summary of recent tournament results. I added it a few releases back specifically so "what's strong right now" didn't depend on me remembering. So this was supposed to be a five-minute edit to one Python file.

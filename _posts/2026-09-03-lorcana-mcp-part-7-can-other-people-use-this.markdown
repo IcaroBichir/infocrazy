@@ -19,6 +19,9 @@ date: 2026-09-03T17:10:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 The question was: *"How do I make this so other people can use it — on Claude or ChatGPT?"*
 
 My first reaction was that this was already handled. `lorcana-mcp` has been on [PyPI](https://pypi.org/project/lorcana-mcp/) since [part one](/blog/lorcana-mcp-part-1-why-i-built-it/), it's in the official MCP Registry, it's listed on mcp.so and Glama. `pip install lorcana-mcp` works for anyone. Done, right?

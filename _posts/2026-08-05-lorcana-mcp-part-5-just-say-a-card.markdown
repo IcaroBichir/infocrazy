@@ -19,6 +19,9 @@ date: 2026-08-05T15:30:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 In [part four](/blog/lorcana-mcp-part-4-the-fix-that-broke-things/) I closed out a promo-mapping bug. This post isn't about a bug — it's about what a normal Tuesday actually looks like now, a year and change into this project, when I want a new deck.
 
 ---

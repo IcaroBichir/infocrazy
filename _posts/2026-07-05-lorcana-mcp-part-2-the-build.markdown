@@ -19,6 +19,9 @@ date: 2026-07-05T09:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+
 In [part one](/blog/lorcana-mcp-part-1-why-i-built-it/) I covered why I built this and why it needed no OAuth at all. This post is about what's actually inside.
 
 The full source is at [github.com/IcaroBichir/lorcana-mcp](https://github.com/IcaroBichir/lorcana-mcp). `pip install lorcana-mcp` gets you running in about a minute. This post is for anyone who wants to see how it works.

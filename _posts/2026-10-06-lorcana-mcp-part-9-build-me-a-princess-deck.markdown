@@ -19,6 +19,21 @@ date: 2026-10-06T10:00:00-04:00
 </div>
 </section><!-- /#table-of-contents -->
 
+> **Want to try it?** `lorcana-mcp` works in Claude Desktop (one click), Claude Code, Cursor, VS Code, Windsurf, Cline, and Zed. **[Setup guide for every AI tool →](/blog/add-lorcana-mcp-to-claude-desktop/)**
+
+<style>
+.post-fig { text-align: center; margin: 1.75rem 0; }
+.post-fig img { max-width: 460px; width: 100%; height: auto; border-radius: 4px; }
+.post-fig.wide img { max-width: 100%; }
+.post-fig figcaption { font-size: 0.85em; opacity: 0.75; margin-top: 0.5rem; }
+</style>
+
+<figure class="post-fig wide">
+  <img src="/images/lorcana-hyperia-city-key-art.jpg" alt="Hyperia City key art: Miguel from Coco playing his guitar through a colorful city, with the Hyperia City logo" loading="lazy">
+  <figcaption>Hyperia City, Set 14, goes legal October 23.</figcaption>
+</figure>
+
+
 `build_deck` has been in `lorcana-mcp` since [Part 3](/blog/lorcana-mcp-part-3-building-an-ai-deck-builder/). You give it an ink pair, a format, and a mode (only cards you own, the ideal deck priced against your collection, or the ideal deck at full market price), and it assembles a legal, curve-balanced 60.
 
 It had a blind spot I hadn't noticed until I tried to talk to it like a player. Nobody says *"build me an Amber/Ruby deck."* They say *"build me a Princess deck."* *"I want something with Detectives."* *"Make me a Stitch deck."* The theme comes first and the ink colors are a detail, sometimes one they don't know yet.
@@ -99,6 +114,11 @@ That honesty is the same principle as the [last post](/blog/lorcana-mcp-part-8-t
 
 ### Preview mode: Hyperia City before release
 
+<figure class="post-fig">
+  <img src="/images/lorcana-belle-exceptional-writer.jpg" alt="Belle - Exceptional Writer, a Hyperia City card: Dreamborn, Hero, Princess, Shift 3" loading="lazy">
+  <figcaption>Belle - Exceptional Writer: a Hyperia City Princess, exactly the card you'd want in a themed brew before release.</figcaption>
+</figure>
+
 Legality in `lorcana-mcp` comes from duels.ink, and duels.ink doesn't list a set as legal anywhere until it actually releases. So for the two weeks when everyone is theorycrafting with the new cards, the deck builder couldn't use any of them.
 
 The new flag:
@@ -144,6 +164,11 @@ Themed, auto-colored, limited to what's in my binder, with the new set included.
 `build_deck` is still a heuristic: curve, stat efficiency, keyword value, and now theme. It doesn't understand combos. It also still trusts card data that has known holes; a few songs show up in the API with only their "sing this for free" reminder text and none of their actual effect, and the builder will happily score them blind. Treat what it gives you as a strong first draft for a theme, not a tournament list.
 
 But the first draft now starts from the question a player actually asks.
+
+<figure class="post-fig">
+  <img src="/images/lorcana-mcp-part-9-story.jpg" alt="Instagram story for Part 9: “Build me a Princess deck” with the Belle card and Hyperia City art" loading="lazy">
+  <figcaption>The story I posted for this release.</figcaption>
+</figure>
 
 ### Try it
 
