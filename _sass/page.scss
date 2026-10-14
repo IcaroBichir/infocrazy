@@ -866,12 +866,6 @@ $button-size: 1.5rem;
   }
 }
 
-.ugc-partner-logo--dark {
-  background: $surface-light;
-  border: 1px solid $border-color;
-  box-shadow: none;
-}
-
 .ugc-subsection-label {
   display: block;
   @include font-rem(13);
